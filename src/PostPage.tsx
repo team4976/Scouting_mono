@@ -1,0 +1,17 @@
+import "./index.css"
+import { TextBox, CardBox } from "./Functions"
+import { Nav } from "./App"
+
+export function PostPage () {
+    return(
+        <div className="screen">
+            <div className="title">POST GAME</div>
+            <div className="subTitle">Fouls</div>
+            <TextBox/>
+            <div className="spacer2"/>
+            <div className="subTitle">Cards</div>
+            <CardBox/>
+            <Nav/>
+        </div>
+    )
+}

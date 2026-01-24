@@ -48,7 +48,7 @@ export function AutoTransPage() {
             </div>
             <div className="subTitle">Win Auto</div>
             <Checkbox/>
-            <Nav/>
+            <Nav last={1} next={3}/>
         </div>
     )
 }

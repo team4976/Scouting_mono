@@ -45,7 +45,7 @@ export function EndPage() {
                 <Tally/>
                 </div>
             </div>
-            <Nav/>
+            <Nav last={6} next={8}/>
         </div>
     )
 }

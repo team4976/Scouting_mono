@@ -34,7 +34,7 @@ export function Active1Page() {
                 <Tally/>
                 </div>
             </div>
-            <Nav/>
+            <Nav last={2} next={4}/>
         </div>
     )
 }
@@ -71,7 +71,7 @@ export function Active2Page() {
                 <Tally/>
                 </div>
             </div>
-            <Nav/>
+            <Nav last={4} next={6}/>
         </div>
     )
 }

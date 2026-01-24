@@ -1,7 +1,6 @@
 import "./index.css";
-import { BrowserRouter, Routes} from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Routes, useNavigate, Route, useLocation} from 'react-router-dom';
+import { vlars } from "./Functions";
 //Page Imports
 import { HomePage } from "./HomePage";
 import { PrePage } from "./PreGame";
@@ -13,6 +12,10 @@ import { PostPage } from "./PostPage";
 
 let routes = ["/", "/pre", "/auto", "/active1", "/inactive1", "/active2", "/inactive2", "/end", "/post"]
 
+type NavProps = {
+  last: number;
+  next: number;
+};
 export function App() {
   return (          
     <div className="screen">
@@ -30,32 +33,17 @@ export function App() {
             <Route path="/post" element={<PostPage/>} />
           </Routes>
         </BrowserRouter>
-      {/*
-      <HomePage/>
-      _______________________________________
-      <PrePage/>
-      _______________________________________
-      <AutoTransPage/>
-      _______________________________________
-      <Active1Page/>
-      _______________________________________
-      <Inactive1Page/>
-      _______________________________________
-      <Active2Page/>
-      _______________________________________
-      <Inactive2Page/>
-      _______________________________________
-      <EndPage/>
-      _______________________________________
-      <PostPage/>
-      */}
     </div>
   );
 }
 //Navigation Buttons
-export function StartBut() {
+export function StartBut({}) {
+  const navigate = useNavigate(); 
+  const handleClick = () => {
+    navigate('pre')
+  };
   return(
-   <button className="navBut">
+   <button className="navBut" onClick={handleClick}>
         Start Scouting
     </button>
 
@@ -63,40 +51,60 @@ export function StartBut() {
 }
 
 export function SettBut() {
+  const navigate = useNavigate(); 
+  const handleClick = () => {
+    navigate('/settings');
+  };
   return(
-    <button className="navBut">
+    <button className="navBut" onClick={handleClick}>
       Settings
     </button>
   )
 }
 
 export function QrBut() {
+  const navigate = useNavigate(); 
+  const handleClick = () => {
+    navigate('/qr');
+  };
   return(
-    <button className="navBut">
+    <button className="navBut" onClick={handleClick}>
       Scan QR
     </button>
   )
 }
 
 export function HistoryBut() {
+  const navigate = useNavigate(); 
+  const handleClick = () => {
+    navigate('/history');
+  };
   return(
-   <button className="navBut">
+   <button className="navBut" onClick={handleClick}>
         Match History
     </button>
 
   );
 }
 
-export function Nav() {
+export function Nav({last, next}) {
+  const navigate = useNavigate(); 
+  const handleClick1 = () => {
+    navigate(String(routes[last]))
+  };
+  const handleClick2 = () => {
+    navigate(String(routes[next]))
+    console.log(vlars)
+  }
   return(
     <div className="row">
       <div className="left">
-        <button className="navBut sNavBut">
+        <button className="navBut sNavBut" onClick={handleClick1}>
           &lt;
         </button>
       </div>
-      <div className="rigt">
-        <button className="navBut sNavBut">
+      <div className="right">
+        <button className="navBut sNavBut" onClick={handleClick2}>
           &gt;
         </button>
       </div>

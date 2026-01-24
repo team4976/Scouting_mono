@@ -1,3 +1,9 @@
-Active app branch: scouting_app_2026_layout </br>
-Active HQ branch: n/a </br>
-Active Rodney branch: n/a
+This is the test data base for all sql
+
+Tables:
+Matches
+Students
+....
+
+David:
+to acess the data base paste '.open "C:\\Users\\1davm\\OneDrive\\Desktop\\Robotics\\Scouting_mono\\Test.db" ' into sqlite

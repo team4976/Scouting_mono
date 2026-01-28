@@ -43,6 +43,10 @@ export const vlars = {
   red: false,
 }
 
+let touched = false //to see if the color box had been touched yet
+let tog1 = false //toggle for red
+let tog2 = false // toggle for blue
+
 //Input Buttons
 export function TextBox({vlar, tip}) {
 const [text, setText] = useState(vlars[vlar] || '');
@@ -65,33 +69,57 @@ const handleChange = (event) => {
 }
 
 export function TeamBox() {
-  const [ch1, setBool1] = useState(false);
-  const [ch2, setBool2] = useState(false);
-  const check1 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const checked = e.target.checked;
-    setBool1(checked);
-    setBool2(false);
-  };
+  if (vlars.color == true) {
+    tog1 = true
+    tog2 = false
+  } else if (touched == true) {
+    tog1 = false
+    tog2 = true
+  } else{
+    tog1 = false
+    tog2 = false
+  }
+  const [ch1, setch1] = useState(tog2)
+  const [ch2, setch2] = useState(tog1)
 
-  const check2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const checked = e.target.checked;
-    setBool2(checked);
-    setBool1(false);
-  };
+  const handleCheck1 = () => {
+    touched = true
+    if (ch1 == false) {
+      vlars.color = false
+      setch1(true)
+      setch2(false)
+    } else {
+      setch1(false)
+      touched = false
+    }
+  }
+
+  const handleCheck2 = () => {
+    touched = true
+    if (ch2 == false) {
+      vlars.color = true
+      setch2(true)
+      setch1(false)
+    } else {
+      vlars.color = false
+      setch2(false)
+      touched = false
+    }
+  }
   return(
     <div className="row">
       <input
         type="checkbox"
         className="checkboxB"
+        onChange={handleCheck1}
         checked={ch1}
-        onClick={check1}
       />
       <div className="checkboxSpacer"/>
       <input
         type="checkbox"
         className="checkboxR"
         checked={ch2}
-        onClick={check2}
+        onChange={handleCheck2}
       />
     </div>
   )

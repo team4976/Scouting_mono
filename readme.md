@@ -1,4 +1,4 @@
-This is the test data base for all sql
+This is the test data base for all sqlite
 
 Tables: <br/>
 Matches<br/>

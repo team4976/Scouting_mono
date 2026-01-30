@@ -1,5 +1,5 @@
 import "./index.css"
-import { Score, Checkbox, Tally } from "./Functions"
+import { Score, Checkbox, Tally, ClimbBox } from "./Functions"
 import { Nav } from "./App"
 
 export function EndPage() {
@@ -8,41 +8,30 @@ export function EndPage() {
             <div className="title">END GAME</div>
             <div className="column">
                 <div className="subTitle">Fuel Scored</div>
-                <Score/>
+                <Score
+                vlar={"endscore"}/>
             </div>
             <div className="spacer1"/>
             <div className="column">
                 <div className="subTitle">Fuel Missed</div>
-                <Score/>
+                <Score
+                vlar={"endmiss"}/>
             </div>
             <div className="subTitle">Climb</div>
             <div className="row">
-                <div className="column">
-                <div className="subTitle">L1</div>
-                <Checkbox/>
-                </div>
-                <div className="spacer1"/>
-                <div className="column">
-                <div className="subTitle">L2</div>
-                <Checkbox/>
-                <div className="subTitle">Fell</div>
-                <Checkbox/>
-                </div>
-                <div className="spacer1"/>
-                <div className="column">
-                <div className="subTitle">L3</div>
-                <Checkbox/>
-                </div>
+                <ClimbBox/>
             </div>
             <div className="row">
                 <div className="column">
                 <div className="subTitle">Breakdowns</div>
-                <Tally/>
+                <Tally
+                vlar={"break"}/>
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                 <div className="subTitle">Recoveries</div>
-                <Tally/>
+                <Tally
+                vlar={"recover"}/>
                 </div>
             </div>
             <Nav last={6} next={8}/>

@@ -87,7 +87,10 @@ export function HistoryBut() {
   );
 }
 
-export function Nav({last, next}) {
+
+export function Nav(props: NavProps) {
+  const { last, next } = props;
+
   const navigate = useNavigate(); 
   const handleClick1 = () => {
     navigate(String(routes[last]))

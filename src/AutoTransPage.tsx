@@ -7,25 +7,33 @@ export function AutoTransPage() {
         <div className="screen">
             <div className="title">AUTO/TRANSITION</div>
             <div className="subTitle">Fuel Scored</div>
-            <Score/>
+            <Score
+            vlar={"autoScore"}/>
             <div className="subTitle">Fuel Missed</div>
-            <Score/>
+            <Score
+            vlar={"autoMiss"}/>
             <div className="spacer2"/>
             <div className="subTitle">Fuel Collection</div>
             <div className="row">
                 <div className="column">
                     <div className="subTitle">Collect Outpost</div>
-                    <Checkbox/>
+                    <Checkbox
+                    vlar={"autooutp"}
+                    />
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                     <div className="subTitle">Move Fuel</div>
-                    <Checkbox/>
+                    <Checkbox
+                    vlar={"autocollect"}
+                    />
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                     <div className="subTitle">Collect Depot</div>
-                    <Checkbox/>
+                    <Checkbox
+                    vlar={"autodepo"}
+                    />
                 </div>
             </div>
             <div className="spacer2"/>
@@ -33,21 +41,28 @@ export function AutoTransPage() {
             <div className="row">
                 <div className="column">
                     <div className="subTitle">Climbed</div>
-                    <Checkbox/>
+                    <Checkbox
+                    vlar={"autoclimb"}
+                    />
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                     <div className="subTitle">Got Down</div>
-                    <Checkbox/>
+                    <Checkbox
+                    vlar={"autodown"}
+                    />
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                   <div className="subTitle">Failed</div>
-                  <Checkbox/>
+                  <Checkbox
+                  vlar={"autofailed"}/>
                 </div>
             </div>
             <div className="subTitle">Win Auto</div>
-            <Checkbox/>
+            <Checkbox
+            vlar={"autowin"}
+            />
             <Nav last={1} next={3}/>
         </div>
     )

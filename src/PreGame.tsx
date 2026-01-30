@@ -11,7 +11,7 @@ export function PrePage() {
                   <div className="subTitle">Team Color</div>
                   <TeamBox/>
                   <div className="subTitle">No Show</div>
-                  <Checkbox/>
+                  <Checkbox vlar={"noShow"}/>
                   <Nav last={0} next={2}/>
         </div>
     )

@@ -40,7 +40,7 @@ export function App() {
 export function StartBut({}) {
   const navigate = useNavigate(); 
   const handleClick = () => {
-    navigate('pre')
+    navigate('/pre')
   };
   return(
    <button className="navBut" onClick={handleClick}>

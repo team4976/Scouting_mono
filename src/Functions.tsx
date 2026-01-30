@@ -141,16 +141,38 @@ export function TeamBox() {
 }
 
 export function CardBox() {
+  const [ch1, setCheck1] = useState(vlars.yellow || false)
+  const [ch2, setCheck2] = useState(vlars.red || false)
+
+  const handleCheck1 = (event) => {
+    const newCh1 = event.target.checked
+    vlars.red = false
+    vlars.yellow = newCh1
+    setCheck1(newCh1)
+    setCheck2(false)
+  }
+
+  const handleCheck2 = (event) => {
+    const newCh2 = event.target.checked
+    vlars.red = newCh2
+    vlars.yellow = false
+    setCheck2(newCh2)
+    setCheck1(false)
+  }
   return(
     <div className="row">
       <input
         type="checkbox"
         className="checkboxY"
+        checked={ch1}
+        onChange={handleCheck1}
       />
       <div className="checkboxSpacer"/>
       <input
         type="checkbox"
         className="checkboxR"
+        checked={ch2}
+        onChange={handleCheck2}
       />
     </div>
   )

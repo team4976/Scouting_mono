@@ -1,5 +1,5 @@
 import "./index.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //Variables were tracking
 export let vlars = {
   //pregame
@@ -66,13 +66,19 @@ type TextProps = {
 
 //Input Buttons
 export function TextBox({vlar, tip}: TextProps) {
-const [text, setText] = useState(vlars[vlar] || '');
+  const [text, setText] = useState(vlars[vlar] || '');
+  useEffect(() => {
+    console.log("Reloaded");
+    const stored = localStorage.getItem("data");
+    vlars = JSON.parse(stored);
+  }, []);
 
 const handleChange = (event) => {
   const newText = event.target.value;
   setText(newText);
   vlars[vlar] = newText;
   console.log (vlars[vlar]);
+  save()
 }
   return(
     <input
@@ -98,6 +104,12 @@ export function TeamBox() {
   }
   const [ch1, setch1] = useState(tog2)
   const [ch2, setch2] = useState(tog1)
+  useEffect(() => {
+    console.log("Reloaded");
+    console.log(vlars.teamno)
+    const stored = localStorage.getItem("data");
+    vlars = JSON.parse(stored);
+  }, []);
 
   const handleCheck1 = () => {
     touched = true
@@ -109,6 +121,7 @@ export function TeamBox() {
       setch1(false)
       touched = false
     }
+    save()
   }
 
   const handleCheck2 = () => {
@@ -122,6 +135,7 @@ export function TeamBox() {
       setch2(false)
       touched = false
     }
+    save()
   }
   return(
     <div className="row">
@@ -143,6 +157,11 @@ export function TeamBox() {
 }
 
 export function CardBox() {
+  useEffect(() => {
+    console.log("Reloaded");
+    const stored = localStorage.getItem("data");
+    vlars = JSON.parse(stored);
+  }, []);
   const [ch1, setCheck1] = useState(vlars.yellow || false)
   const [ch2, setCheck2] = useState(vlars.red || false)
 
@@ -152,6 +171,7 @@ export function CardBox() {
     vlars.yellow = newCh1
     setCheck1(newCh1)
     setCheck2(false)
+    save()
   }
 
   const handleCheck2 = (event) => {
@@ -160,6 +180,7 @@ export function CardBox() {
     vlars.yellow = false
     setCheck2(newCh2)
     setCheck1(false)
+    save()
   }
   return(
     <div className="row">
@@ -181,6 +202,11 @@ export function CardBox() {
 }
 
 export function Checkbox({vlar}) {
+  useEffect(() => {
+    console.log("Reloaded");
+    const stored = localStorage.getItem("data");
+    vlars = JSON.parse(stored);
+  }, []);
   const [che, setCheck] = useState(vlars[vlar] || false)
 
   const handleCheck = (event) => {
@@ -188,6 +214,7 @@ export function Checkbox({vlar}) {
     setCheck(newType);
     vlars[vlar] = newType;
     console.log (vlars[vlar]);
+    save()
   }
   return(
       <input
@@ -200,18 +227,25 @@ export function Checkbox({vlar}) {
 }
 
 export function Tally({vlar}) {
+  useEffect(() => {
+    console.log("Reloaded");
+    const stored = localStorage.getItem("data");
+    vlars = JSON.parse(stored);
+  }, []);
   const [numb, setNum] = useState(vlars[vlar] || 0)
 
   const handleAdd = () => {
     const newNum = (vlars[vlar] += 1) 
     vlars[vlar] = newNum;
     setNum(newNum)
+    save()
   }
 
   const handleSub = () => {
     const newNum = (vlars[vlar] -1) 
     vlars[vlar] = newNum;
     setNum(newNum)
+    save()
   }
   return(
     <div className="row">
@@ -230,30 +264,39 @@ export function Tally({vlar}) {
 }
 
 export function Score({vlar}) {
+  useEffect(() => {
+    console.log("Reloaded");
+    const stored = localStorage.getItem("data");
+    vlars = JSON.parse(stored);
+  }, []);
   const [numb, setNum] = useState(vlars[vlar] || 0)
 
   const handleAdd = () => {
     const newNum = (vlars[vlar] += 1) 
     vlars[vlar] = newNum;
     setNum(newNum)
+    save()
   }
 
   const handleAdd5 = () => {
     const newNum = (vlars[vlar] += 5) 
     vlars[vlar] = newNum;
     setNum(newNum)
+    save()
   }
 
   const handleSub = () => {
     const newNum = (vlars[vlar] -1) 
     vlars[vlar] = newNum;
     setNum(newNum)
+    save()
   }
 
   const handleSub5 = () => {
     const newNum = (vlars[vlar] -5) 
     vlars[vlar] = newNum;
     setNum(newNum)
+    save()
   }
   return(
     <div className="row">
@@ -281,6 +324,11 @@ export function Score({vlar}) {
 }
 
 export function ClimbBox() {
+  useEffect(() => {
+    console.log("Reloaded");
+    const stored = localStorage.getItem("data");
+    vlars = JSON.parse(stored);
+  }, []);
   if (vlars.endclimb == 1) {
     cl1 = true
     cl2 = false
@@ -313,6 +361,7 @@ export function ClimbBox() {
     checkLF(false)
     vlars.endclimb = 1
     console.log(vlars.endclimb)
+    save()
   }
 
   const handleCheck2 = () => {
@@ -322,6 +371,7 @@ export function ClimbBox() {
     checkLF(false)
     vlars.endclimb = 2
     console.log(vlars.endclimb)
+    save()
   }
 
   const handleCheck3 = () => {
@@ -331,6 +381,7 @@ export function ClimbBox() {
     checkLF(false)
     vlars.endclimb = 3
     console.log(vlars.endclimb)
+    save()
   }
 
   const handleCheckF = () => {
@@ -341,6 +392,7 @@ export function ClimbBox() {
     vlars.endclimb = 0;
     vlars.fall = true;
     console.log(vlars.endclimb)
+    save()
   }
   return(
     <div className="row">
@@ -389,17 +441,40 @@ const [listv, setListv] = useState(vlars)
   const clearDat = () => {
     vlars = baseVlars
     setListv(vlars)
+    console.log("cleared")
   }
+  const load = () => {
+    const stored = localStorage.getItem("data")
+    vlars = JSON.parse(stored)
+    setListv(vlars)
+
+  }
+    
+  useEffect(() => {
+    const stored = localStorage.getItem("data")
+    vlars = JSON.parse(stored)
+    setListv(vlars)
+  }, []);
   return(
-    <div>
+    <div className="column">
       <pre>{JSON.stringify(listv, null, 2)}</pre>
       <button className="navBut" onClick={clearDat}>
         Clear Data
+      </button>
+            <button className="navBut"onClick={save}>
+        Save Data
+      </button>
+
+      <button className="navBut"onClick={load}>
+        Load Data
       </button>
     </div>
   )
 }
 
-export function saveData() {
-  localStorage.setItem("data", vlars)
-}
+
+const save = () => {
+    localStorage.setItem("data", JSON.stringify(vlars))
+    console.log("saved")
+  }
+  

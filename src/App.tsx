@@ -1,6 +1,6 @@
 import "./index.css";
 import { BrowserRouter, Routes, useNavigate, Route, useLocation} from 'react-router-dom';
-import { vlars } from "./Functions";
+import { vlars, baseVlars, resetVlars } from "./Functions";
 //Page Imports
 import { HomePage } from "./HomePage";
 import { PrePage } from "./PreGame";
@@ -9,8 +9,9 @@ import { Active1Page, Active2Page } from "./ActivePage";
 import { Inactive1Page, Inactive2Page } from "./InactivePage";
 import { EndPage } from "./EndPage";
 import { PostPage } from "./PostPage";
+import { GenPage } from "./GenPage";
 
-let routes = ["/", "/pre", "/auto", "/active1", "/inactive1", "/active2", "/inactive2", "/end", "/post"]
+let routes = ["/", "/pre", "/auto", "/active1", "/inactive1", "/active2", "/inactive2", "/end", "/post", "/gen"]
 
 type NavProps = {
   last: number;
@@ -31,6 +32,7 @@ export function App() {
             <Route path="/inactive2" element={<Inactive2Page/>} />
             <Route path="/end" element={<EndPage/>} />
             <Route path="/post" element={<PostPage/>} />
+            <Route path="/gen" element={<GenPage/>} />
           </Routes>
         </BrowserRouter>
     </div>

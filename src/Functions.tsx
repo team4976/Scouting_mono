@@ -1,7 +1,7 @@
 import "./index.css"
 import { useState } from "react";
 //Variables were tracking
-export const vlars = {
+export let vlars = {
   //pregame
   color: false,
   noshow: false,
@@ -45,6 +45,8 @@ export const vlars = {
   yellow: false,
   red: false,
 }
+
+export const baseVlars = { ...vlars }; 
 
 let touched = false //to see if the color box had been touched yet
 let tog1 = false //toggle for red
@@ -380,4 +382,24 @@ export function ClimbBox() {
       </div>
     </div>
   )
+}
+
+export function ClearData() {
+const [listv, setListv] = useState(vlars)
+  const clearDat = () => {
+    vlars = baseVlars
+    setListv(vlars)
+  }
+  return(
+    <div>
+      <pre>{JSON.stringify(listv, null, 2)}</pre>
+      <button className="navBut" onClick={clearDat}>
+        Clear Data
+      </button>
+    </div>
+  )
+}
+
+export function saveData() {
+  localStorage.setItem("data", vlars)
 }

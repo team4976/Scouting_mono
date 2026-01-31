@@ -6,11 +6,11 @@ export function PostPage () {
     return(
         <div className="screen">
             <div className="title">POST GAME</div>
-            <TextBox vlar={"foul"} tip={"Fouls"}/>
+            <TextBox vlar={"fouls"} tip={"Fouls"}/>
             <div className="spacer2"/>
             <div className="subTitle">Cards</div>
             <CardBox/>
-            <Nav last={7} next={7}/>
+            <Nav last={7} next={9}/>
         </div>
     )
 }

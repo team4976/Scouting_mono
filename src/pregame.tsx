@@ -1,6 +1,6 @@
 import "./index.css"
-import {Textbox, CheckboxT, CheckboxG, Last, Next} from "./App"
-
+import {Textbox, CheckboxT, CheckboxG} from "./functions"
+import{Last, Next} from "./App"
 
 export function Pregame(){
     return(
@@ -8,18 +8,22 @@ export function Pregame(){
             <div className="title">
                     Pre-Game
                   </div>
-                        <Textbox></Textbox>
-                        <Textbox></Textbox>
+                        <Textbox sd={"teamnum"} tip={"Team #"}></Textbox>
+                        <Textbox sd={"matchnum"} tip={"Match #"}></Textbox>
             
                         <div className="spacer2">
-                            Team Colour
-                          <CheckboxT></CheckboxT>
+                            <div className="subTitle">
+                        Team Colour
+                      </div>
+                          <CheckboxT sd={"color"}></CheckboxT>
                         </div>
                         
                         <div className="spacer2">
                           <div className="column">
-                            No Show
-                            <CheckboxG></CheckboxG>
+                           <div className="subTitle">
+                        No Show
+                      </div>
+                            <CheckboxG sd={"noshow"}></CheckboxG>
                           </div>
                         </div>
                 <div className="row">

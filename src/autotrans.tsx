@@ -1,5 +1,7 @@
 import "./index.css"
-import {Tally, CheckboxG,TallyB, Last, Next} from "./App"
+import {Tally, CheckboxG,TallyB, CheckboxCl} from "./functions"
+import{Last, Next} from "./App"
+
 
 export function AutoTrans() {
     return(
@@ -10,32 +12,39 @@ export function AutoTrans() {
     
                         <div className="spacer2">
                           <div className="column">
-                            Fuel Scored
+                            <div className="subTitle">
+                        Fuel Scored
+                      </div>
                             <Tally></Tally>
                             </div>
                         </div>
             
                         <div className="spacer2">
                           <div className="column">
-                            Fuel Missed
+                           <div className="subTitle">
+                        Fuel Missed
+                      </div>
                             <Tally></Tally>
                           </div>
                         </div>
             
             
                       <div className="spacer2">
+                        <div className="subTitle">
+                        Climb
+                      </div>
                        <div className="row">
                         <div className="spacer1">
                           <div className="column">
                           Climb
-                          <CheckboxG></CheckboxG>
+                          <CheckboxG sd={"autoclimb"}></CheckboxG>
                           </div>
                         </div>
             
                         <div className="spacer1">
                           <div className="column">
                             Fail
-                            <CheckboxG></CheckboxG>
+                            <CheckboxG sd={"autofailed"}></CheckboxG>
                           </div>
                         </div>
             
@@ -44,51 +53,62 @@ export function AutoTrans() {
             
             
                     <div className="spacer2">
+                      <div className="subTitle">
+                        Collection
+                      </div>
                       <div className="row">
             
                         <div className="spacer1">
+                          
                           <div className="column">
                             Fuel
-                            <CheckboxG></CheckboxG>
+                            <CheckboxG sd={"autofcollect"}></CheckboxG>
                           </div>
                         </div>
             
                         <div className="spacer1">
                           <div className="column">
                             Outpost
-                            <CheckboxG></CheckboxG>
+                            <CheckboxG sd={"autocollecto"}></CheckboxG>
                           </div>
                         </div>
             
                         <div className="spacer1">
                           <div className="column">
                             Depot
-                            <CheckboxG></CheckboxG>
+                            <CheckboxG sd={"autocollectd"}></CheckboxG>
                           </div>
                         </div>
             
                       </div>
                     </div>
             
-                      <div className="column">
-                        Climb Off
-                        <CheckboxG></CheckboxG>
-                      </div>
+                     
             
                       <div className="spacer2">
                     <div className="column">
-                      Breakdown 
+                      <div className="subTitle">
+                        Breakdown
+                      </div> 
                       <TallyB></TallyB>
                    </div>
                   </div>
             
                   <div className="spacer2">
                     <div className="column">
-                    Recovery 
+                    <div className="subTitle">
+                        Recovery
+                      </div>
                     <TallyB></TallyB>
                     </div>
                   </div>
 
+                      <div className="column">
+                        <div className="subTitle">
+                        Climb Down
+                      </div>
+                        <CheckboxG sd={"autoclimbdown"}></CheckboxG>
+                      </div>
                    <div className="row">
                                       <Last last={1}></Last>
                                     <div className="spacer1">

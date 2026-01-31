@@ -1,5 +1,6 @@
 import "./index.css"
-import { TallyB, CheckboxC, Last, Next } from "./App"
+import { TallyB, CheckboxC} from "./functions"
+import{Last, Next} from "./App"
 
 export function Postgame(){
     return (
@@ -10,14 +11,18 @@ export function Postgame(){
 
       <div className="spacer2">
         <div className="column">
-          Fouls 
+          <div className="subTitle">
+                       Fouls
+                      </div> 
           <TallyB></TallyB>
         </div>
       </div>
 
       <div className="spacer2">
         <div className="column">
-        Cards 
+         <div className="subTitle">
+                       Cards
+                      </div>
         <CheckboxC></CheckboxC>
         </div>
       </div>

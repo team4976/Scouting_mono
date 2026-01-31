@@ -1,5 +1,6 @@
 import "./index.css"
-import {Tally, CheckboxG, TallyB, Last, Next} from "./App"
+import {Tally, CheckboxG, TallyB} from "./functions"
+import{Last, Next} from "./App"
 
 export function Active2(){
     return (
@@ -8,32 +9,40 @@ export function Active2(){
                   Active 2
                 </div>
             
-                  <div className="spacer2">
+                   <div className="spacer2">
                     <div className="column">
-                      Fuel Scored
+                      <div className="subTitle">
+                        Fuel Scored
+                      </div>
                       <Tally></Tally>
                     </div>
                   </div>
             
                   <div className="spacer2">
                     <div className="column">
-                      Fuel Missed
+                      <div className="subTitle">
+                        Fuel Missed
+                      </div>
                       <Tally></Tally>
                     </div>
                   </div>
-            
+
+                    <div className="subTitle">
+                      Outpost
+                    </div>
+           
                     <div className="row">
                       <div className="spacer1">
                         <div className="column">
-                          Outpost Fill
-                          <CheckboxG></CheckboxG>
+                         Fill
+                          <CheckboxG sd={"act2fillo"}></CheckboxG>
                         </div>
                       </div>
             
                       <div className="spacer1">
                         <div className="column">
-                          Outpost Take
-                          <CheckboxG></CheckboxG>
+                         Take
+                          <CheckboxG sd={"act2takeo"}></CheckboxG>
                         </div>
                       </div>
             
@@ -41,14 +50,18 @@ export function Active2(){
             
                     <div className="spacer2">
                     <div className="column">
-                      Breakdown 
+                      <div className="subTitle">
+                        Breakdown
+                      </div>
                       <TallyB></TallyB>
                    </div>
                   </div>
             
                   <div className="spacer2">
                     <div className="column">
-                    Recovery 
+                    <div className="subTitle">
+                        Recovery
+                      </div> 
                     <TallyB></TallyB>
                     </div>
                   </div>

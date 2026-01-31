@@ -1,5 +1,6 @@
 import "./index.css"
-import { CheckboxG, TallyB, Last, Next } from "./App"
+import { CheckboxG, TallyB, CheckboxCl} from "./functions"
+import{Last, Next} from "./App"
 
 export function Endgame(){
     return (
@@ -8,10 +9,11 @@ export function Endgame(){
                 Endgame
               </div>
             
-                <div className="spacer2">
+              
                   <div className="column">
-                    Climb
-                  </div>
+                   <div className="subTitle">
+                        Climb
+                      </div>
                   </div>
             
                   <div className="row">
@@ -19,35 +21,46 @@ export function Endgame(){
                     <div className="spacer1">
                       <div className="column">
                         L1
-                        <CheckboxG></CheckboxG>
+                        <CheckboxCl></CheckboxCl>
                       </div>
                     </div>
             
                     <div className="spacer1">
                       <div className="column">
                         L2 
-                        <CheckboxG></CheckboxG>
+                        <CheckboxCl></CheckboxCl>
                      </div>
                     </div>
             
                     <div className="spacer1">
                       <div className="column">
                         L3
-                        <CheckboxG></CheckboxG>
+                        <CheckboxCl></CheckboxCl>
                       </div>
+                    </div>
+                  </div>
+
+                  <div className="spacer2">
+                    <div className="column">
+                      No Climb
+                      <CheckboxCl></CheckboxCl>
                     </div>
                   </div>
             
                   <div className="spacer2">
                     <div className="column">
-                      Breakdown 
+                      <div className="subTitle">
+                        Breakdown
+                      </div> 
                       <TallyB></TallyB>
                    </div>
                   </div>
             
                   <div className="spacer2">
                     <div className="column">
-                    Recovery 
+                    <div className="subTitle">
+                        Recovery
+                      </div>
                     <TallyB></TallyB>
                     </div>
                   </div>

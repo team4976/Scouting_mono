@@ -10,6 +10,7 @@ import { Inactive2 } from "./inactive2";
 import { Endgame } from "./endgame";
 import { Postgame } from "./postgame";
 import "./index.css";
+import {sdat} from "./functions"
 
 import logo from "./logo.svg";
 import reactLogo from "./react.svg";
@@ -61,86 +62,11 @@ export function Histbut(){
         </button>)
 }
 
-export function Textbox(){
-  return (
-    <input
-      type="text"
-      placeholder="wfaoajsf"
-      className="inputText"/>
-  )
-}
-
-export function CheckboxT(){
-  return (
-     <div className="row"><input 
-      type="checkbox"
-      className="checkboxB"/>
-      <input
-      type="checkbox"
-      className="checkboxR"/>
-      </div>
-)
-}
-
-export function CheckboxC(){
-  return (
-     <div className="row"><input 
-      type="checkbox"
-      className="checkboxY"/>
-      <input
-      type="checkbox"
-      className="checkboxR"/>
-      </div>
-)
-}
-
-export function CheckboxG(){
-  return(
-    <input
-    type="checkbox"
-    className="checkboxG">
-    </input>
-  )
-}
-
-export function Tally(){
-  return(
-    <div className="row">
-     <button className="tallyButton">
-      -5
-     </button>
-      <button className="tallyButton">
-      -
-     </button>
-     <div className="counter"></div>
-      <button className="tallyButton">
-      +
-     </button>
-      <button className="tallyButton">
-      +5
-     </button>
-      </div>
-  )
-}
-
-export function TallyB(){
-  return(
-    <div className="row">
-      <div className="tallyButton">
-        -
-      </div>
-      <button className="counter"></button>
-      <div className="tallyButton">
-        +
-      </div>
-    </div>
-  )
-}
-
 export function Next({next}){
 const navigate=useNavigate();
 const handleclick=()=>{
   navigate(String(routes[next]))
+  console.log(sdat)
 }
 
   return(

@@ -1,8 +1,0 @@
-Open terminal in Scouting_mono
-Git pull
-Git branch (too see your different branches)
-Git checkout sql_test_database (your branch) 
-
-Git add * (say I want to add all these changes and * means all)
-Git commit -m "what you did"
-Git push

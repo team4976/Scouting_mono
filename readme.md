@@ -1,8 +1,8 @@
-This is the test data base for all sqlite
+Data base for scouting
 
 Tables: <br/>
 Matches<br/>
 Students<br/>
-teams<br/>
+Teams<br/>
 ....
 

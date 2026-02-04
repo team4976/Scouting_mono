@@ -9,13 +9,14 @@ import { Active2 } from "./active2";
 import { Inactive2 } from "./inactive2";
 import { Endgame } from "./endgame";
 import { Postgame } from "./postgame";
+import { Data } from "./data";
 import "./index.css";
 import {sdat} from "./functions"
 
 import logo from "./logo.svg";
 import reactLogo from "./react.svg";
 
-let routes=["/","/pre","/auto","/active1","/inactive1","/active2","/inactive2","/end","/post"]
+let routes=["/","/pre","/auto","/active1","/inactive1","/active2","/inactive2","/end","/post", "/data"]
 
 export function App() {
   return (
@@ -31,6 +32,7 @@ export function App() {
           <Route path="/inactive2" element={<Inactive2/>}/>
           <Route path="/end" element={<Endgame/>}/>
           <Route path="/post" element={<Postgame/>}/>
+          <Route path="/data" element={<Data/>}/>
         </Routes>
         </BrowserRouter>
     </div>

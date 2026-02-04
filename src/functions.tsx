@@ -65,45 +65,61 @@ export function Textbox({sd, tip}){
   )
 }
 
+
 export function CheckboxT({sd}){
-    const [clicked, setclicked]=useState(sdat[sd]||false)
-    const handlecheck=(event)=>{
-        const newtype=event.target.checked
-        setclicked(newtype)
-        sdat[sd]=newtype
-    }
+   const [chk,setchk]=useState<Boolean>(sdat[sd]||null)
+
+        if (chk == true) {
+          sdat[sd] = true
+        }
+
+        if (chk ==false){
+          sdat[sd] = false
+        }
+
+  
   return (
      <div className="row">
         <input
       type="checkbox"
-      onChange={() => setclicked(false)}
-      checked={clicked}
+      checked={chk===false}
+      onChange={()=>setchk(false)}
       className="checkboxB"
+
       />
 
       <input
       type="checkbox" 
-      onChange={()=> setclicked(true)}
-      checked={clicked}
       className="checkboxR"
+      checked={chk===true}
+      onChange={()=>setchk(true)}
       />
       </div>
 )
 }
 
 export function CheckboxC(){
+const [goty, setgoty]=useState(sdat.ycard||false)
+const [gotr, setgotr]=useState(sdat.rcard||false)
+
   return (
      <div className="row"><input 
       type="checkbox"
-      className="checkboxY"/>
+      checked={sdat.ycard}
+      className="checkboxY"
+      />
+     
+      
       <input
       type="checkbox"
-      className="checkboxR"/>
+      checked={sdat.rcard}
+      className="checkboxR"
+       />
       </div>
 )
 }
 
-export function CheckboxG({sd}){
+export function CheckboxG({sd}) {
     const [chk,setchk]=useState(sdat[sd]||false)
     const handlecheck=(event)=>{
         const newtype=event.target.checked

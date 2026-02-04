@@ -29,7 +29,7 @@ export function Postgame(){
        <div className="row">
                                                               <Last last={7}></Last>
                                                             <div className="spacer1">
-                                                              <Next next={8}></Next>
+                                                              <Next next={9}></Next>
                                                             </div>
                                                           </div>
         </div>

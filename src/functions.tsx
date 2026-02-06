@@ -38,7 +38,7 @@ export const sdat={
     climb1:false,
     climb2:false,
     climb3:false,
-    noclimb:false,
+    fall:false,
     breakdown:0,
     recovery:0,
 
@@ -102,17 +102,32 @@ export function CheckboxC(){
 const [goty, setgoty]=useState(sdat.ycard||false)
 const [gotr, setgotr]=useState(sdat.rcard||false)
 
+    const handlecheckR=(event)=>{
+        setgotr(event.target.checked)
+        setgoty(false)
+        sdat.ycard = false
+        sdat.rcard = event.target.checked
+    }
+
+        const handlecheckY=(event)=>{
+        setgoty(event.target.checked)
+        setgotr(false)
+        sdat.ycard = event.target.checked
+        sdat.rcard = false
+    }
   return (
      <div className="row"><input 
       type="checkbox"
-      checked={sdat.ycard}
+      checked={goty}
+      onChange={handlecheckY}
       className="checkboxY"
       />
      
       
       <input
       type="checkbox"
-      checked={sdat.rcard}
+      checked={gotr}
+      onChange={handlecheckR}
       className="checkboxR"
        />
       </div>
@@ -138,15 +153,111 @@ export function CheckboxG({sd}) {
 }
 
 export function CheckboxCl(){
+  const [cl1, setcl1]=useState(sdat.climb1||false)
+  const [cl2, setcl2]=useState(sdat.climb2||false)
+  const [cl3, setcl3]=useState(sdat.climb3||false)
+  const [fall, setfall]=useState(sdat.fall||false)
+
+  const handlecheckcl1=(event)=>{
+        setcl1(event.target.checked)
+        setcl2(false)
+        setcl3(false)
+        setfall(false)
+        sdat.climb2 = false
+        sdat.climb3 = false
+        sdat.fall= false
+        sdat.climb1 = event.target.checked
+    }
+
+        const handlecheckcl2=(event)=>{
+        setcl2(event.target.checked)
+        setcl1(false)
+        setcl3(false)
+        setfall(false)
+        sdat.climb1 = false
+        sdat.climb3 = false
+        sdat.fall= false
+        sdat.climb2 = event.target.checked
+
+        }
+
+        const handlecheckcl3=(event)=>{
+        setcl3(event.target.checked)
+        setcl1(false)
+        setcl2(false)
+        setfall(false)
+        sdat.climb1 = false
+        sdat.climb2 = false
+        sdat.fall= false
+        sdat.climb3 = event.target.checked
+
+        }
+
+        const handlecheckfall=(event)=>{
+        setfall(event.target.checked)
+        setcl1(false)
+        setcl3(false)
+        setcl2(false)
+        sdat.climb1 = false
+        sdat.climb3 = false
+        sdat.climb2= false
+        sdat.fall = event.target.checked
+
+        }
     return(
+      <div className="screen">
+       <div className="row">
+        <div className="spacer1">
+        <div className="column"> L1
         <input
-        type="checkbox"
-        className="checkboxG">
-        </input>
+      type="checkbox"
+      onChange={handlecheckcl1}
+      className="checkboxG"
+      checked={cl1}
+
+      />
+      </div>
+      </div>
+
+      <div className="spacer1">
+      <div className="column">L2
+       <input
+      type="checkbox"
+      checked={cl2}
+      onChange={handlecheckcl2}
+      className="checkboxG"
+      /> 
+    </div>
+    </div>
+
+      <div className="spacer1">
+    <div className="column">L3
+       <input
+       checked={cl3}
+       onChange={handlecheckcl3}
+      type="checkbox"
+      className="checkboxG"
+      /> 
+      </div>
+      </div>
+      </div>
+
+      <div className="spacer2">
+      <div className="column">Fall
+      <input
+      type="checkbox"
+      checked={fall}
+       onChange={handlecheckfall}
+      className="checkboxG"
+      /> 
+      </div>
+      </div>
+      </div>
     )
 }
 
 export function Tally(){
+  const 
   return(
     <div className="row">
      <button className="tallyButton">

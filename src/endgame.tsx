@@ -16,36 +16,11 @@ export function Endgame(){
                       </div>
                   </div>
             
-                  <div className="row">
-            
-                    <div className="spacer1">
-                      <div className="column">
-                        L1
-                        <CheckboxCl></CheckboxCl>
-                      </div>
-                    </div>
-            
-                    <div className="spacer1">
-                      <div className="column">
-                        L2 
-                        <CheckboxCl></CheckboxCl>
-                     </div>
-                    </div>
-            
-                    <div className="spacer1">
-                      <div className="column">
-                        L3
-                        <CheckboxCl></CheckboxCl>
-                      </div>
-                    </div>
-                  </div>
+                  
+                    <CheckboxCl></CheckboxCl>
+                 
+      
 
-                  <div className="spacer2">
-                    <div className="column">
-                      No Climb
-                      <CheckboxCl></CheckboxCl>
-                    </div>
-                  </div>
             
                   <div className="spacer2">
                     <div className="column">

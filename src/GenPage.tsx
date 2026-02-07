@@ -1,15 +1,19 @@
 import { Nav } from "./App"
-import { vlars, ClearData, PackBits } from "./Functions"
+import { useMemo } from "react"
+import { vlars, ClearData} from "./Functions"
+import { genCodeValue, PackBits } from "./BitPacking"
 import Barcode from "react-barcode"
 
 export function GenPage () {
+    const barcodeValue = useMemo(() => {
+    return genCodeValue();
+    }, [vlars]);
     return(
         <div className="screen">
-            <Barcode value="hello worlds"/>
-            this is the gen page ill put some cool stuff here like the results <br/>
-            results: <br/>
+            <Barcode value={barcodeValue}/>
+            <br/>
             <ClearData/>
-            <PackBits variables={vlars}/>
+            <PackBits/>
             <Nav next={0} last={8}/>
         </div>
     )

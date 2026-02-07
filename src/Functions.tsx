@@ -44,6 +44,8 @@ export let vlars = {
   fouls: 0,
   yellow: false,
   red: false,
+  //Extra
+  sid: 0
 }
 
 export const baseVlars = { ...vlars }; 
@@ -67,18 +69,11 @@ type TextProps = {
 //Input Buttons
 export function TextBox({vlar, tip}: TextProps) {
   const [text, setText] = useState(vlars[vlar] || '');
-  useEffect(() => {
-    console.log("Reloaded");
-    const stored = localStorage.getItem("data");
-    vlars = JSON.parse(stored);
-  }, []);
-
 const handleChange = (event) => {
   const newText = event.target.value;
   setText(newText);
   vlars[vlar] = newText;
   console.log (vlars[vlar]);
-  save()
 }
   return(
     <input
@@ -104,12 +99,6 @@ export function TeamBox() {
   }
   const [ch1, setch1] = useState(tog2)
   const [ch2, setch2] = useState(tog1)
-  useEffect(() => {
-    console.log("Reloaded");
-    console.log(vlars.teamno)
-    const stored = localStorage.getItem("data");
-    vlars = JSON.parse(stored);
-  }, []);
 
   const handleCheck1 = () => {
     touched = true
@@ -121,7 +110,6 @@ export function TeamBox() {
       setch1(false)
       touched = false
     }
-    save()
   }
 
   const handleCheck2 = () => {
@@ -135,7 +123,6 @@ export function TeamBox() {
       setch2(false)
       touched = false
     }
-    save()
   }
   return(
     <div className="row">
@@ -157,11 +144,6 @@ export function TeamBox() {
 }
 
 export function CardBox() {
-  useEffect(() => {
-    console.log("Reloaded");
-    const stored = localStorage.getItem("data");
-    vlars = JSON.parse(stored);
-  }, []);
   const [ch1, setCheck1] = useState(vlars.yellow || false)
   const [ch2, setCheck2] = useState(vlars.red || false)
 
@@ -171,7 +153,6 @@ export function CardBox() {
     vlars.yellow = newCh1
     setCheck1(newCh1)
     setCheck2(false)
-    save()
   }
 
   const handleCheck2 = (event) => {
@@ -180,7 +161,6 @@ export function CardBox() {
     vlars.yellow = false
     setCheck2(newCh2)
     setCheck1(false)
-    save()
   }
   return(
     <div className="row">
@@ -202,11 +182,6 @@ export function CardBox() {
 }
 
 export function Checkbox({vlar}) {
-  useEffect(() => {
-    console.log("Reloaded");
-    const stored = localStorage.getItem("data");
-    vlars = JSON.parse(stored);
-  }, []);
   const [che, setCheck] = useState(vlars[vlar] || false)
 
   const handleCheck = (event) => {
@@ -214,7 +189,6 @@ export function Checkbox({vlar}) {
     setCheck(newType);
     vlars[vlar] = newType;
     console.log (vlars[vlar]);
-    save()
   }
   return(
       <input
@@ -227,25 +201,18 @@ export function Checkbox({vlar}) {
 }
 
 export function Tally({vlar}) {
-  useEffect(() => {
-    console.log("Reloaded");
-    const stored = localStorage.getItem("data");
-    vlars = JSON.parse(stored);
-  }, []);
   const [numb, setNum] = useState(vlars[vlar] || 0)
 
   const handleAdd = () => {
     const newNum = (vlars[vlar] += 1) 
     vlars[vlar] = newNum;
     setNum(newNum)
-    save()
   }
 
   const handleSub = () => {
     const newNum = (vlars[vlar] -1) 
     vlars[vlar] = newNum;
     setNum(newNum)
-    save()
   }
   return(
     <div className="row">
@@ -264,39 +231,30 @@ export function Tally({vlar}) {
 }
 
 export function Score({vlar}) {
-  useEffect(() => {
-    console.log("Reloaded");
-    const stored = localStorage.getItem("data");
-    vlars = JSON.parse(stored);
-  }, []);
   const [numb, setNum] = useState(vlars[vlar] || 0)
 
   const handleAdd = () => {
     const newNum = (vlars[vlar] += 1) 
     vlars[vlar] = newNum;
     setNum(newNum)
-    save()
   }
 
   const handleAdd5 = () => {
     const newNum = (vlars[vlar] += 5) 
     vlars[vlar] = newNum;
     setNum(newNum)
-    save()
   }
 
   const handleSub = () => {
     const newNum = (vlars[vlar] -1) 
     vlars[vlar] = newNum;
     setNum(newNum)
-    save()
   }
 
   const handleSub5 = () => {
     const newNum = (vlars[vlar] -5) 
     vlars[vlar] = newNum;
     setNum(newNum)
-    save()
   }
   return(
     <div className="row">
@@ -324,11 +282,6 @@ export function Score({vlar}) {
 }
 
 export function ClimbBox() {
-  useEffect(() => {
-    console.log("Reloaded");
-    const stored = localStorage.getItem("data");
-    vlars = JSON.parse(stored);
-  }, []);
   if (vlars.endclimb == 1) {
     cl1 = true
     cl2 = false
@@ -361,7 +314,6 @@ export function ClimbBox() {
     checkLF(false)
     vlars.endclimb = 1
     console.log(vlars.endclimb)
-    save()
   }
 
   const handleCheck2 = () => {
@@ -371,7 +323,6 @@ export function ClimbBox() {
     checkLF(false)
     vlars.endclimb = 2
     console.log(vlars.endclimb)
-    save()
   }
 
   const handleCheck3 = () => {
@@ -381,7 +332,6 @@ export function ClimbBox() {
     checkLF(false)
     vlars.endclimb = 3
     console.log(vlars.endclimb)
-    save()
   }
 
   const handleCheckF = () => {
@@ -392,7 +342,6 @@ export function ClimbBox() {
     vlars.endclimb = 0;
     vlars.fall = true;
     console.log(vlars.endclimb)
-    save()
   }
   return(
     <div className="row">
@@ -438,125 +387,9 @@ export function ClimbBox() {
 
 export function ClearData() {
 const [listv, setListv] = useState(vlars)
-  const clearDat = () => {
-    vlars = baseVlars
-    setListv(vlars)
-    console.log("cleared")
-  }
-  const load = () => {
-    const stored = localStorage.getItem("data")
-    vlars = JSON.parse(stored)
-    setListv(vlars)
-
-  }
-    
-  useEffect(() => {
-    const stored = localStorage.getItem("data")
-    vlars = JSON.parse(stored)
-    setListv(vlars)
-  }, []);
   return(
     <div className="column">
       <pre>{JSON.stringify(listv, null, 2)}</pre>
-      <button className="navBut" onClick={clearDat}>
-        Clear Data
-      </button>
-            <button className="navBut"onClick={save}>
-        Save Data
-      </button>
-
-      <button className="navBut"onClick={load}>
-        Load Data
-      </button>
     </div>
   )
 }
-
-<<<<<<< HEAD
-export function saveData() {
-  localStorage.setItem("data", vlars)
-}
-
-export function PackBits() {
-  const testVal = () => {
-    vlars.color = true
-    vlars.teamno = "15"
-    vlars.noshow = true
-    vlars.autocollect = false
-
-    vlars.matchno = "50"
-    vlars.autooutp = true
-
-    vlars.autoscore = 52
-    vlars.autoclimb = true
-
-    vlars.automiss = 2
-    vlars.autodepo = true
-    vlars.autocollect = false
-    vlars.a1outp = true
-    vlars.a1take = false
-
-    vlars.a1score = 54
-    vlars.a2score = 99
-    vlars.endscore = 23
-
-    vlars.a1miss = 40
-    vlars.a2miss = 31
-    vlars.endmiss = 16
-
-    vlars.i1fill = true
-    vlars.i2fill = false
-    vlars.i1move = true
-    vlars.i2move = false
-    vlars.endclimb = 1
-    vlars.yellow = false
-    vlars.fall = true
-    console.log(vlars)
-  }
-  
-  const packBits = () => {
-    let autoclm
-    if (vlars.autoclimb == true) {
-      if (vlars.autodown == true) {
-        autoclm = 3
-      } else if (vlars.autofailed == true){
-        autoclm = 2
-      } else {
-        autoclm = 1
-      }
-    } else {
-      autoclm = 0
-    }
-    let telescore = vlars.a1score + vlars.a2score + vlars.endscore
-    let telemiss = vlars.a1miss + vlars.a2miss + vlars.endmiss
-
-    const Bits = new Uint8Array(10)
-    Bits[0] = (((Number(vlars.color) & 0x01) << 7) | ((Number(vlars.teamno) & 0x1F) << 2) | ((Number(vlars.noshow) & 0x01) << 1) | (Number(vlars.autocollect) & 0x01))
-    Bits[1] = (((Number(vlars.matchno) & 0x007f) << 1) | (Number(vlars.autooutp) & 0x01))
-    Bits[2] = (((Number(vlars.autoscore) & 0x003f) << 2) | (Number(autoclm) & 0x003))
-    Bits[3] = (((Number(vlars.automiss) & 0x00f) << 4) | ((Number(vlars.autodepo) & 0x001) << 3) | ((Number(vlars.autocollect) & 0x001) << 2) |((Number(vlars.a1take) & 0x001) << 1) | (Number(vlars.a1outp) & 0x001))
-    Bits[4] = (Number(telescore) & 0x00ff)
-    Bits[5] = (((Number(telemiss) & 0x007f) << 1) | (Number(vlars.a2outp) & 0x001))
-    Bits[6] = (((Number(vlars.i1fill) & 0x001) << 7) | ((Number(vlars.i2fill) & 0x001) << 6) | ((Number(vlars.i1move) & 0x001) << 5) | ((Number(vlars.i2move) & 0x001) << 4) | ((Number(vlars.endclimb) & 0x003) << 3) | ((Number(vlars.yellow) & 0x001) << 1) | (Number(vlars.fall) & 0x0001))
-
-    console.log(Bits)
-  }
-  return(
-    <div>
-      <button className="navBut" onClick={testVal}>
-        Set test Vars
-      </button>
-      <button className="navBut" onClick={packBits}>
-        Pack Bits
-      </button>
-    </div>
-  )
-}
-=======
-
-const save = () => {
-    localStorage.setItem("data", JSON.stringify(vlars))
-    console.log("saved")
-  }
-  
->>>>>>> 2c98d0a04628b220236da78921090519eb5754d7

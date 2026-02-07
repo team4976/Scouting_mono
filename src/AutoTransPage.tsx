@@ -1,5 +1,5 @@
 import "./index.css";
-import { Score, Checkbox } from "./Functions";
+import { Score, Checkbox, Tally } from "./Functions";
 import { Nav } from "./App";
 
 export function AutoTransPage() {
@@ -63,6 +63,19 @@ export function AutoTransPage() {
             <Checkbox
             vlar={"autowin"}
             />
+            <div className="row">
+                <div className="column">
+                <div className="subTitle">Breakdowns</div>
+                <Tally
+                vlar={"break"}/>
+                </div>
+                <div className="spacer1"/>
+                <div className="column">
+                <div className="subTitle">Recoveries</div>
+                <Tally
+                vlar={"recover"}/>
+                </div>
+            </div>
             <Nav last={1} next={3}/>
         </div>
     )

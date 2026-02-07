@@ -1,6 +1,6 @@
 import "./index.css";
 import { BrowserRouter, Routes, useNavigate, Route, useLocation} from 'react-router-dom';
-import { vlars, baseVlars, resetVlars } from "./Functions";
+import { vlars} from "./Functions";
 //Page Imports
 import { HomePage } from "./HomePage";
 import { PrePage } from "./PreGame";
@@ -10,8 +10,9 @@ import { Inactive1Page, Inactive2Page } from "./InactivePage";
 import { EndPage } from "./EndPage";
 import { PostPage } from "./PostPage";
 import { GenPage } from "./GenPage";
+import { SettingsPage } from "./SettingsPage";
 
-let routes = ["/", "/pre", "/auto", "/active1", "/inactive1", "/active2", "/inactive2", "/end", "/post", "/gen"]
+let routes = ["/", "/pre", "/auto", "/active1", "/inactive1", "/active2", "/inactive2", "/end", "/post", "/gen", "/settings"]
 
 type NavProps = {
   last: number;
@@ -33,6 +34,7 @@ export function App() {
             <Route path="/end" element={<EndPage/>} />
             <Route path="/post" element={<PostPage/>} />
             <Route path="/gen" element={<GenPage/>} />
+            <Route path="/settings" element={<SettingsPage/>} />
           </Routes>
         </BrowserRouter>
     </div>
@@ -115,6 +117,18 @@ export function Nav(props: NavProps) {
       </div>
     </div>
   )
+}
+export function HomeBut() {
+  const navigate = useNavigate(); 
+  const handleClick = () => {
+    navigate('/');
+  };
+  return(
+   <button className="navBut" onClick={handleClick}>
+        Home
+    </button>
+
+  );
 }
 
 export default App;

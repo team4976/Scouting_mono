@@ -1,6 +1,6 @@
 import "./index.css"
 import { Score, Checkbox, Tally, ClimbBox } from "./Functions"
-import { Nav } from "./App"
+import { NavIA } from "./App"
 
 export function EndPage() {
     return(
@@ -34,7 +34,7 @@ export function EndPage() {
                 vlar={"recover"}/>
                 </div>
             </div>
-            <Nav last={6} next={8}/>
+            <NavIA lastlose={6} lastwin={5} nextwin={8} nextlose={8}/>
         </div>
     )
 }

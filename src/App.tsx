@@ -118,6 +118,44 @@ export function Nav(props: NavProps) {
     </div>
   )
 }
+type NavIAProps = {
+  lastwin: Number
+  lastlose: Number
+  nextwin: Number
+  nextlose: Number
+}
+export function NavIA(props: NavIAProps) {
+  const {nextlose, nextwin, lastlose, lastwin} = props;
+  const navigate = useNavigate(); 
+  const handleClick1 = () => {
+    if(vlars.autowin == true) {
+      navigate(String(routes[Number(lastwin)]))
+    } else{
+      navigate(String(routes[Number(lastlose)]))
+    }
+  }
+  const handleClick2 = () => {
+    if(vlars.autowin == true){
+      navigate(String(routes[Number(nextwin)]))
+    } else {
+      navigate(String(routes[Number(nextlose)]))
+    }
+  }
+  return(
+    <div className="row">
+      <div className="left">
+        <button className="navBut sNavBut" onClick={handleClick1}>
+          &lt;
+        </button>
+      </div>
+      <div className="right">
+        <button className="navBut sNavBut" onClick={handleClick2}>
+          &gt;
+        </button>
+      </div>
+    </div>
+  )
+}
 export function HomeBut() {
   const navigate = useNavigate(); 
   const handleClick = () => {

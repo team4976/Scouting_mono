@@ -1,6 +1,6 @@
 import "./index.css";
 import { Score, Checkbox, Tally } from "./Functions";
-import { Nav } from "./App";
+import { NavIA } from "./App";
 
 export function AutoTransPage() {
     return(
@@ -76,7 +76,7 @@ export function AutoTransPage() {
                 vlar={"recover"}/>
                 </div>
             </div>
-            <Nav last={1} next={3}/>
+            <NavIA lastlose={1} lastwin={1} nextlose={3} nextwin={4}/>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import "./index.css"
 import { Score, Checkbox, Tally } from "./Functions"
-import { Nav } from "./App"
+import { NavIA } from "./App"
 
 export function Active1Page() {
     return(
@@ -42,7 +42,7 @@ export function Active1Page() {
                 vlar={"recover"}/>
                 </div>
             </div>
-            <Nav last={2} next={4}/>
+            <NavIA lastlose={2} lastwin={4} nextwin={6} nextlose={4}/>
         </div>
     )
 }
@@ -87,7 +87,7 @@ export function Active2Page() {
                 vlar={"recover"}/>
                 </div>
             </div>
-            <Nav last={4} next={6}/>
+            <NavIA nextlose={6} nextwin={7} lastlose={4} lastwin={6}/>
         </div>
     )
 }

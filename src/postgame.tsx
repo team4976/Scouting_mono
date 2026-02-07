@@ -14,7 +14,7 @@ export function Postgame(){
           <div className="subTitle">
                        Fouls
                       </div> 
-          <TallyB></TallyB>
+          <TallyB sd={"fouls"}></TallyB>
         </div>
       </div>
 

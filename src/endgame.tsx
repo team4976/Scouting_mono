@@ -27,7 +27,7 @@ export function Endgame(){
                       <div className="subTitle">
                         Breakdown
                       </div> 
-                      <TallyB></TallyB>
+                      <TallyB sd={"breakdown"}></TallyB>
                    </div>
                   </div>
             
@@ -36,7 +36,7 @@ export function Endgame(){
                     <div className="subTitle">
                         Recovery
                       </div>
-                    <TallyB></TallyB>
+                    <TallyB sd={"recovery"}></TallyB>
                     </div>
                   </div>
                    <div className="row">

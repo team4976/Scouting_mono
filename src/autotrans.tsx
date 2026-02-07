@@ -15,7 +15,7 @@ export function AutoTrans() {
                             <div className="subTitle">
                         Fuel Scored
                       </div>
-                            <Tally></Tally>
+                            <Tally sd={"autoscore"}></Tally>
                             </div>
                         </div>
             
@@ -24,7 +24,7 @@ export function AutoTrans() {
                            <div className="subTitle">
                         Fuel Missed
                       </div>
-                            <Tally></Tally>
+                            <Tally sd={"automiss"}></Tally>
                           </div>
                         </div>
             
@@ -90,7 +90,7 @@ export function AutoTrans() {
                       <div className="subTitle">
                         Breakdown
                       </div> 
-                      <TallyB></TallyB>
+                      <TallyB sd={"autobreakdown"}></TallyB>
                    </div>
                   </div>
             
@@ -99,7 +99,7 @@ export function AutoTrans() {
                     <div className="subTitle">
                         Recovery
                       </div>
-                    <TallyB></TallyB>
+                    <TallyB sd={"autorecovery"}></TallyB>
                     </div>
                   </div>
 
@@ -108,6 +108,14 @@ export function AutoTrans() {
                         Climb Down
                       </div>
                         <CheckboxG sd={"autoclimbdown"}></CheckboxG>
+                      </div>
+                      <div className="spacer2">
+                        
+                      <div className="column">
+                        <div className="subTitle">Auto Win
+                          </div>
+                        <CheckboxG sd={"autowin"}></CheckboxG>
+                      </div>
                       </div>
                    <div className="row">
                                       <Last last={1}></Last>

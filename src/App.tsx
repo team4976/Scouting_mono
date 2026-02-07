@@ -17,6 +17,8 @@ import logo from "./logo.svg";
 import reactLogo from "./react.svg";
 
 let routes=["/","/pre","/auto","/active1","/inactive1","/active2","/inactive2","/end","/post", "/data"]
+let b1=["/", "/pre","/auto", "/inactive1","/inactive2", "/active1", "/end", "/active2","/post","/data"]
+let b2=["/", "/pre","/inactive1","/auto","/inactive2", "/active1","/active2","/end", ,"/post","/data"]
 
 export function App() {
   return (
@@ -67,7 +69,13 @@ export function Histbut(){
 export function Next({next}){
 const navigate=useNavigate();
 const handleclick=()=>{
-  navigate(String(routes[next]))
+  const isChecked=sdat.autowin
+  if (isChecked){
+    navigate(String(b1[next]))
+  } else {
+    navigate(String(routes[next]))
+  }
+    
   console.log(sdat)
 }
 
@@ -81,7 +89,12 @@ const handleclick=()=>{
 export function Last({last}){
 const navigate=useNavigate();
 const handleclick=()=>{
-  navigate(String(routes[last]))
+   const isChecked=sdat.autowin
+  if (isChecked){
+    navigate(String(b2[last]))
+  } else {
+    navigate(String(routes[last]))
+  }
 }
 
   return(

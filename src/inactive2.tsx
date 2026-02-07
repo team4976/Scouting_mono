@@ -47,7 +47,7 @@ export function Inactive2(){
                      <div className="subTitle">
                         Breakdown
                       </div>
-                      <TallyB></TallyB>
+                      <TallyB sd={"in2breakdown"}></TallyB>
                    </div>
                   </div>
             
@@ -56,7 +56,7 @@ export function Inactive2(){
                     <div className="subTitle">
                         Recovery
                       </div>
-                    <TallyB></TallyB>
+                    <TallyB sd={"in2recovery"}></TallyB>
                     </div>
                   </div>
 

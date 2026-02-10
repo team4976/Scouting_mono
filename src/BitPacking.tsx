@@ -77,7 +77,7 @@ export function PackBits() {
     Bits[9] = (((Number(vlars.sid) & 0x003f) << 2) | ((Number(vlars.i1def) & 0x001) << 1) | (Number(vlars.i2def) & 0x001))
     console.log(Bits)
     console.log(Bits[2].toString(16))
-    let hexBits = []
+    let hexBits = new Array
     Bits.forEach((bit) => {
       hexBits.push(bit.toString(16))
     })
@@ -131,7 +131,7 @@ export function genCodeValue() {
   Bits[9] = (((Number(vlars.sid) & 0x003f) << 2) | ((Number(vlars.i1def) & 0x001) << 1) | (Number(vlars.i2def) & 0x001))
   console.log(Bits)
   console.log(Bits[2].toString(16))
-  let hexBits = []
+  let hexBits = new Array
   Bits.forEach((bit) => {
     hexBits.push(bit.toString(16))
   })

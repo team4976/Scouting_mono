@@ -1,5 +1,5 @@
 import "./index.css"
-import { CheckboxG, TallyB, CheckboxCl} from "./functions"
+import { CheckboxG, TallyB, CheckboxCl, Tally} from "./functions"
 import{Last, Next} from "./App"
 
 export function Endgame(){
@@ -8,7 +8,25 @@ export function Endgame(){
             <div className="title">
                 Endgame
               </div>
-            
+
+                <div className="spacer2">
+                                    <div className="column">
+                                      <div className="subTitle">
+                                        Fuel Scored
+                                      </div>
+                                      <Tally max={256} sd={"endscore"}></Tally>
+                                    </div>
+                                  </div>
+                            
+                                  <div className="spacer2">
+                                    <div className="column">
+                                      <div className="subTitle">
+                                        Fuel Missed
+                                      </div>
+                                      <Tally max={128} sd={"endmiss"}></Tally>
+                                    </div>
+                                  </div>
+                               
               
                   <div className="column">
                    <div className="subTitle">
@@ -27,7 +45,7 @@ export function Endgame(){
                       <div className="subTitle">
                         Breakdown
                       </div> 
-                      <TallyB sd={"breakdown"}></TallyB>
+                      <TallyB max={15} sd={"breakdown"}></TallyB>
                    </div>
                   </div>
             
@@ -36,7 +54,7 @@ export function Endgame(){
                     <div className="subTitle">
                         Recovery
                       </div>
-                    <TallyB sd={"recovery"}></TallyB>
+                    <TallyB max={15} sd={"recovery"}></TallyB>
                     </div>
                   </div>
                    <div className="row">

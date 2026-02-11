@@ -14,38 +14,31 @@ export const sdat={
     autofailed:false,
     autocollecto:false,
     autocollectd:false,
-    autobreakdown:0,
-    autorecovery:0,
+
     autowin:false,
 
     act1score:0,
     act1miss:0,
     act1fillo:false,
     act1takeo:false,
-    a1breakdown:0,
-    a1recovery:0,
 
     inact1def:false,
-    inact1fcollect:false,
     inact1fillo:false,
     inact1fmove:false,
-    in1breakdown:0,
-    in1recovery:0,
+
 
     act2score:0,
     act2miss:0,
     act2fillo:false,
     act2takeo:false,
-    a2breakdown:0,
-    a2recovery:0,
+
 
     inact2def:false,
-    inact2fcollect:false,
     inact2fillo:false,
     inact2fmove:false,
-    in2breakdown:0,
-    in2recovery:0,
-
+   
+    endscore:0,
+    endmiss:0,
     climb1:false,
     climb2:false,
     climb3:false,
@@ -56,6 +49,8 @@ export const sdat={
     fouls:0,
     ycard:false,
     rcard:false,
+
+    
 }
 
 export function Textbox({sd, tip}){
@@ -268,23 +263,30 @@ export function CheckboxCl(){
     )
 }
 
-export function Tally({sd}){
+export function Tally({sd, max}){
   const [count, setCount]=useState<number>(sdat[sd]||0)
-
+    
   const handleincrease =()=>{
     setCount(sdat[sd]=Math.max(0, count +5))
+    if (count >= max) {
+      setCount(sdat[sd]=(max))
+    }
   }
 
   const handledecrease =()=>{
-    setCount(sdat[sd]=Math.max(0, count -5))}
+    setCount(sdat[sd]=Math.max(0, count -5))
+  }
   
  const handleincrease1 =()=>{
-    setCount(sdat[sd]=Math.max(0, count +1))}
+    setCount(sdat[sd]=Math.max(0, count +1))
+if (count >= max) {
+      setCount(sdat[sd]=(max))
+    }  
+  }
 
   
   const handledecrease1 =()=>{
-    setCount(sdat[sd]=Math.max(0, count -1))
-  }
+    setCount(sdat[sd]=Math.max(0, count -1))}
     
 
   return(
@@ -315,12 +317,15 @@ export function Tally({sd}){
   )
 }
 
-export function TallyB({sd}){
+export function TallyB({sd, max}){
 
     const [count1, setCount1]=useState<number>(sdat[sd]||0)
 
   const handleincrease =()=>{
     setCount1(sdat[sd]=Math.max(0, count1 +1))
+    if (count1 >= max) {
+      setCount1(sdat[sd]=(max))
+    }
   }
 
   const handledecrease =()=>{

@@ -14,7 +14,7 @@ export function Active1(){
                       <div className="subTitle">
                         Fuel Scored
                       </div>
-                      <Tally sd={"act1score"}></Tally>
+                      <Tally max={255} sd={"act1score"}></Tally>
                     </div>
                   </div>
             
@@ -23,7 +23,7 @@ export function Active1(){
                       <div className="subTitle">
                         Fuel Missed
                       </div>
-                      <Tally sd={"act1miss"}></Tally>
+                      <Tally max={128} sd={"act1miss"}></Tally>
                     </div>
                   </div>
                
@@ -54,7 +54,7 @@ export function Active1(){
                       <div className="subTitle">
                         Breakdown
                       </div>
-                      <TallyB sd={"a1breakdown"}></TallyB>
+                      <TallyB max={15} sd={"breakdown"}></TallyB>
                    </div>
                   </div>
             
@@ -63,7 +63,7 @@ export function Active1(){
                     <div className="subTitle">
                         Recovery
                       </div> 
-                    <TallyB sd={"a1recovery"}></TallyB>
+                    <TallyB max={15} sd={"recovery"}></TallyB>
                     </div>
                   </div>
                    <div className="row">

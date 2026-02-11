@@ -22,12 +22,6 @@ export function Inactive2(){
                       </div>
                     </div>
 
-                    <div className="spacer1">
-                    <div className="column">
-                      Collect Fuel 
-                      <CheckboxG sd={"inact2fcollect"}></CheckboxG>
-                  </div>
-                </div>
             
                   <div className="spacer1">
                     <div className="column">
@@ -47,7 +41,7 @@ export function Inactive2(){
                      <div className="subTitle">
                         Breakdown
                       </div>
-                      <TallyB sd={"in2breakdown"}></TallyB>
+                      <TallyB max={15} sd={"breakdown"}></TallyB>
                    </div>
                   </div>
             
@@ -56,7 +50,7 @@ export function Inactive2(){
                     <div className="subTitle">
                         Recovery
                       </div>
-                    <TallyB sd={"in2recovery"}></TallyB>
+                    <TallyB max={15} sd={"recovery"}></TallyB>
                     </div>
                   </div>
 

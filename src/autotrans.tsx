@@ -15,7 +15,7 @@ export function AutoTrans() {
                             <div className="subTitle">
                         Fuel Scored
                       </div>
-                            <Tally sd={"autoscore"}></Tally>
+                            <Tally max={64} sd={"autoscore"}></Tally>
                             </div>
                         </div>
             
@@ -24,7 +24,7 @@ export function AutoTrans() {
                            <div className="subTitle">
                         Fuel Missed
                       </div>
-                            <Tally sd={"automiss"}></Tally>
+                            <Tally max={16} sd={"automiss"}></Tally>
                           </div>
                         </div>
             
@@ -90,7 +90,7 @@ export function AutoTrans() {
                       <div className="subTitle">
                         Breakdown
                       </div> 
-                      <TallyB sd={"autobreakdown"}></TallyB>
+                      <TallyB max={15} sd={"breakdown"}></TallyB>
                    </div>
                   </div>
             
@@ -99,7 +99,7 @@ export function AutoTrans() {
                     <div className="subTitle">
                         Recovery
                       </div>
-                    <TallyB sd={"autorecovery"}></TallyB>
+                    <TallyB max={15} sd={"recovery"}></TallyB>
                     </div>
                   </div>
 

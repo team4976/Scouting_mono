@@ -2,6 +2,7 @@ import "./index.css"
 import {Last, Next} from "./App"
 import {sdat} from "./functions"
 import { PackBits } from "./bitpacking"
+import Barcode from "react-barcode"
 
 export function Data(){
     return(
@@ -9,6 +10,7 @@ export function Data(){
             <div className="title">
                 Data
             </div>
+            <Barcode></Barcode>
             <PackBits></PackBits>
              <div className="row">
                 <Last last={8}></Last>
@@ -18,3 +20,4 @@ export function Data(){
         </div>
     )
 }
+

@@ -1,5 +1,6 @@
 import { serve } from "bun";
 import index from "./index.html";
+import Barcode from "react-barcode";
 
 const server = serve({
   routes: {

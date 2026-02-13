@@ -12,6 +12,8 @@ import { Postgame } from "./postgame";
 import { Data } from "./data";
 import "./index.css";
 import {sdat} from "./functions"
+import { SettingsPg } from "./settingpg";
+
 
 import logo from "./logo.svg";
 import reactLogo from "./react.svg";
@@ -35,6 +37,7 @@ export function App() {
           <Route path="/end" element={<Endgame/>}/>
           <Route path="/post" element={<Postgame/>}/>
           <Route path="/data" element={<Data/>}/>
+          <Route path="/settings" element={<SettingsPg/>}/>
         </Routes>
         </BrowserRouter>
     </div>
@@ -55,7 +58,11 @@ export function Startbut(){
 }
 
 export function Setbut(){
-  return ( <button className="navBut">
+    const navigate=useNavigate();
+  const handleclick=()=>{
+    navigate ("/settings")
+  }
+  return ( <button className="navBut" onClick={handleclick}>
           Settings
         </button>)
 }

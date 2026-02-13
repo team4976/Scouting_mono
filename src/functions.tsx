@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 export const sdat={
+  
     color: false,
     teamnum:"",
     matchnum:"",
@@ -50,8 +51,12 @@ export const sdat={
     ycard:false,
     rcard:false,
 
+    sid:0,
+
     
 }
+
+export let basedat=sdat
 
 export function Textbox({sd, tip}){
     const [text, settext]=useState(sdat[sd]||"")

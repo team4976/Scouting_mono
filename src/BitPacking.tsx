@@ -135,6 +135,6 @@ export function genCodeValue() {
   Bits.forEach((bit) => {
     hexBits.push(bit.toString(16))
   })
-  const barData = hexBits.join("")
+  const barData = hexBits.join(",")
   return(barData)
 }

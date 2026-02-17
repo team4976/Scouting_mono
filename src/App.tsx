@@ -1,6 +1,6 @@
 import "./index.css";
 import { BrowserRouter, Routes, useNavigate, Route, useLocation} from 'react-router-dom';
-import { vlars} from "./Functions";
+import { baseVlars, vlars, resetVlars} from "./Functions";
 //Page Imports
 import { HomePage } from "./HomePage";
 import { PrePage } from "./PreGame";
@@ -100,8 +100,9 @@ export function Nav(props: NavProps) {
     navigate(String(routes[last]))
   };
   const handleClick2 = () => {
-    navigate(String(routes[next]))
-    console.log(vlars)
+      navigate(String(routes[next]))
+      console.log(vlars)
+
   }
   return(
     <div className="row">
@@ -116,6 +117,18 @@ export function Nav(props: NavProps) {
         </button>
       </div>
     </div>
+  )
+}
+
+export function Back () {
+  const navigate = useNavigate(); 
+  const handleClick1 = () => {
+    navigate(String(routes[8]))
+  };
+  return (
+    <button className="navBut sNavBut" onClick={handleClick1}>
+          &lt;
+    </button>
   )
 }
 type NavIAProps = {
@@ -160,6 +173,7 @@ export function HomeBut() {
   const navigate = useNavigate(); 
   const handleClick = () => {
     navigate('/');
+    resetVlars();
   };
   return(
    <button className="navBut" onClick={handleClick}>

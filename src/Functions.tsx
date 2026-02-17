@@ -302,45 +302,84 @@ export function ClimbBox() {
     cl2 = false
     cl3 = false
     clf = true
+  } else {
+    cl1 = false
+    cl2 = false
+    cl3 = false
+    clf = false
   }
   const [chk1, checkL1] = useState(cl1)
   const [chk2, checkL2] = useState(cl2)
   const [chk3, checkL3] = useState(cl3)
   const [chkF, checkLF] = useState(clf)
   const handleCheck1 = () => {
-    checkL1(true)
-    checkL2(false)
-    checkL3(false)
-    checkLF(false)
-    vlars.endclimb = 1
-    console.log(vlars.endclimb)
+    if (vlars.endclimb == 1) {
+      checkL1(false)
+      checkL2(false)
+      checkL3(false)
+      checkLF(false)
+      vlars.endclimb = 0;
+    } else {
+      checkL1(true)
+      checkL2(false)
+      checkL3(false)
+      checkLF(false)
+      vlars.endclimb = 1
+      console.log(vlars.endclimb)
+    }
   }
 
   const handleCheck2 = () => {
-    checkL1(false)
-    checkL2(true)
-    checkL3(false)
-    checkLF(false)
-    vlars.endclimb = 2
+    if (vlars.endclimb == 2) {
+      checkL1(false)
+      checkL2(false)
+      checkL3(false)
+      checkLF(false)
+      vlars.endclimb = 0;
+    } else {
+      checkL1(false)
+      checkL2(true)
+      checkL3(false)
+      checkLF(false)
+      vlars.endclimb = 2
+    }
     console.log(vlars.endclimb)
   }
 
   const handleCheck3 = () => {
-    checkL1(false)
-    checkL2(false)
-    checkL3(true)
-    checkLF(false)
-    vlars.endclimb = 3
-    console.log(vlars.endclimb)
+    if (vlars.endclimb == 3) {
+      checkL1(false)
+      checkL2(false)
+      checkL3(false)
+      checkLF(false)
+      vlars.endclimb = 0;
+    } else {
+      checkL1(false)
+      checkL2(false)
+      checkL3(true)
+      checkLF(false)
+      vlars.endclimb = 3
+      console.log(vlars.endclimb)
+    }
+
   }
 
   const handleCheckF = () => {
-    checkL1(false)
-    checkL2(false)
-    checkL3(false)
-    checkLF(true)
-    vlars.endclimb = 0;
-    vlars.fall = true;
+    if (vlars.fall == false){
+      checkL1(false)
+      checkL2(false)
+      checkL3(false)
+      checkLF(true)
+      vlars.endclimb = 0;
+      vlars.fall = true;
+    } else {
+      checkL1(false)
+      checkL2(false)
+      checkL3(false)
+      checkLF(false)
+      vlars.endclimb = 0;
+      vlars.fall = false;
+    }
     console.log(vlars.endclimb)
   }
   return(
@@ -392,4 +431,8 @@ const [listv, setListv] = useState(vlars)
       <pre>{JSON.stringify(listv, null, 2)}</pre>
     </div>
   )
+}
+
+export function resetVlars () {
+  vlars = baseVlars
 }

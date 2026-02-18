@@ -1,1 +1,1 @@
-.open "C:\\Users\\1davm\\OneDrive\\Desktop\\Robotics\\Scouting mono sqlite\\Test.db"
+.open "C:\\Users\\1davm\\OneDrive\\Desktop\\Robotics\\Scouting mono sqlite\\Scouting.db"

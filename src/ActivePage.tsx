@@ -8,11 +8,15 @@ export function Active1Page() {
             <div className="title">ACTIVE 1</div>
             <div className="subTitle">Fuel Scored</div>
             <Score
-            vlar={"a1score"}/>
+            vlar={"a1score"}
+            max={255}
+            />
             <div className="spacer2"/>
             <div className="subTitle">Fuel Missed</div>
             <Score
-            vlar={"a1miss"}/>
+            vlar={"a1miss"}
+            max={127}
+            />
             <div className="spacer2"/>
             <div className="row">
                 <div className="column">
@@ -33,13 +37,16 @@ export function Active1Page() {
                 <div className="column">
                 <div className="subTitle">Breakdowns</div>
                 <Tally
-                vlar={"break"}/>
+                vlar={"break"}
+                max={15}
+                />
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                 <div className="subTitle">Recoveries</div>
                 <Tally
-                vlar={"recover"}/>
+                vlar={"recover"}
+                max={15}/>
                 </div>
             </div>
             <NavIA lastlose={2} lastwin={4} nextwin={6} nextlose={4}/>
@@ -53,11 +60,15 @@ export function Active2Page() {
             <div className="title">ACTIVE 2</div>
             <div className="subTitle">Fuel Scored</div>
             <Score
-            vlar={"a2score"}/>
+            vlar={"a2score"}
+            max={255}
+            />
             <div className="spacer2"/>
             <div className="subTitle">Fuel Missed</div>
             <Score
-            vlar={"a2miss"}/>
+            vlar={"a2miss"}
+            max={127}
+            />
             <div className="spacer2"/>
             <div className="row">
                 <div className="column">
@@ -78,13 +89,16 @@ export function Active2Page() {
                 <div className="column">
                 <div className="subTitle">Breakdowns</div>
                 <Tally
-                vlar={"break"}/>
+                vlar={"break"}
+                max={15}
+                />
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                 <div className="subTitle">Recoveries</div>
                 <Tally
-                vlar={"recover"}/>
+                vlar={"recover"}
+                max={15}/>
                 </div>
             </div>
             <NavIA nextlose={6} nextwin={7} lastlose={4} lastwin={6}/>

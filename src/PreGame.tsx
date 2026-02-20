@@ -6,8 +6,8 @@ export function PrePage() {
     return(
         <div className="screen">
             <div className="title">PRE-GAME</div>
-                  <TextBox vlar={"teamno"} tip={"Team #"}/>
-                  <TextBox vlar={"matchno"} tip={"Match #"}/>
+                  <TextBox vlar={"teamno"} tip={"Team #"} max={200000}/>
+                  <TextBox vlar={"matchno"} tip={"Match #"} max={127}/>
                   <div className="subTitle">Team Color</div>
                   <TeamBox/>
                   <div className="subTitle">No Show</div>

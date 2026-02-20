@@ -48,8 +48,22 @@ export let vlars = {
   sid: 0
 }
 
-export const baseVlars = { ...vlars }; 
+export let baseVlars = setBase(); 
 
+export function setBase () {
+  let ls = localStorage.getItem("baseVlars")
+  if (ls != undefined) {
+    console.log(ls)
+    return JSON.parse(ls)
+  } else {
+    console.log(ls)
+    console.log(vlars)
+    return {...vlars}
+  }
+} 
+export function updateVars () {
+  //Were gonna rock in here
+}
 let touched = false //to see if the color box had been touched yet
 let tog1 = false //toggle for red
 let tog2 = false // toggle for blue
@@ -64,15 +78,21 @@ type VlarKey = keyof typeof vlars;
 type TextProps = {
   vlar: VlarKey;
   tip: string;
+  max: number
 }
 
 //Input Buttons
-export function TextBox({vlar, tip}: TextProps) {
+
+//Text field 
+export function TextBox({vlar, tip, max}: TextProps) {
   const [text, setText] = useState(vlars[vlar] || '');
 const handleChange = (event) => {
-  const newText = event.target.value;
-  setText(newText);
-  vlars[vlar] = newText;
+  let newText = Number(event.target.value);
+  if (newText > max) {
+    newText = max
+  }
+  setText(String(newText));
+  vlars[vlar] = String(newText);
   console.log (vlars[vlar]);
 }
   return(
@@ -86,6 +106,7 @@ const handleChange = (event) => {
   )
 }
 
+//checkboxes for the teams color
 export function TeamBox() {
   if (vlars.color == true) {
     tog1 = true
@@ -143,6 +164,7 @@ export function TeamBox() {
   )
 }
 
+//box for ylw and red cards
 export function CardBox() {
   const [ch1, setCheck1] = useState(vlars.yellow || false)
   const [ch2, setCheck2] = useState(vlars.red || false)
@@ -181,6 +203,7 @@ export function CardBox() {
   )
 }
 
+//boolean checkbox
 export function Checkbox({vlar}) {
   const [che, setCheck] = useState(vlars[vlar] || false)
 
@@ -200,19 +223,19 @@ export function Checkbox({vlar}) {
   )
 }
 
-export function Tally({vlar}) {
+//generic tally for something smaller like breakdowns
+export function Tally({vlar, max}) {
   const [numb, setNum] = useState(vlars[vlar] || 0)
 
   const handleAdd = () => {
-    const newNum = (vlars[vlar] += 1) 
-    vlars[vlar] = newNum;
-    setNum(newNum)
+    setNum(vlars[vlar]=Math.max(0, numb +1))
+    if (numb >= max){
+      setNum(vlars[vlar]=(max))
+    }
   }
 
   const handleSub = () => {
-    const newNum = (vlars[vlar] -1) 
-    vlars[vlar] = newNum;
-    setNum(newNum)
+        setNum(vlars[vlar]=Math.max(0, numb -1))
   }
   return(
     <div className="row">
@@ -230,32 +253,33 @@ export function Tally({vlar}) {
   )
 }
 
-export function Score({vlar}) {
+//Box for the ball scoring with the + and - 5 button
+export function Score({vlar, max}) {
   const [numb, setNum] = useState(vlars[vlar] || 0)
 
   const handleAdd = () => {
-    const newNum = (vlars[vlar] += 1) 
-    vlars[vlar] = newNum;
-    setNum(newNum)
+    setNum(vlars[vlar]=Math.max(0, numb +1))
+    if (numb >= max){
+      setNum(vlars[vlar]=(max))
   }
+}
+
 
   const handleAdd5 = () => {
-    const newNum = (vlars[vlar] += 5) 
-    vlars[vlar] = newNum;
-    setNum(newNum)
+     setNum(vlars[vlar]=Math.max(0, numb +5))
+    if (numb >= max){
+      setNum(vlars[vlar]=(max))
   }
+}
 
   const handleSub = () => {
-    const newNum = (vlars[vlar] -1) 
-    vlars[vlar] = newNum;
-    setNum(newNum)
+    setNum(vlars[vlar]=Math.max(0, numb -1))
   }
 
   const handleSub5 = () => {
-    const newNum = (vlars[vlar] -5) 
-    vlars[vlar] = newNum;
-    setNum(newNum)
+    setNum(vlars[vlar]=Math.max(0, numb -5))
   }
+
   return(
     <div className="row">
       <button className="tallyButton"
@@ -279,8 +303,10 @@ export function Score({vlar}) {
       </button> 
     </div>
   )
+
 }
 
+//Function to set the endgame climbing
 export function ClimbBox() {
   if (vlars.endclimb == 1) {
     cl1 = true
@@ -424,6 +450,7 @@ export function ClimbBox() {
   )
 }
 
+//Debuging for the bit packing
 export function ClearData() {
 const [listv, setListv] = useState(vlars)
   return(

@@ -1,5 +1,5 @@
 import "./index.css"
-import { baseVlars, TextBox, vlars } from "./Functions"
+import { baseVlars, setBase, TextBox, vlars } from "./Functions"
 import { HomeBut } from "./App"
 import { useState, useEffect } from "react"
 
@@ -72,12 +72,15 @@ function SaveBut() {
         baseVlars.sid = scoutId
         console.log(baseVlars)
         let scoutName = students[scoutId];
+        localStorage.setItem("baseVlars", JSON.stringify(baseVlars))
 
         if (scoutName !== undefined) {
             const fullName = `Welcome ${scoutName}`;
             setName(fullName);
             setScoutIdSave(String(scoutId));
             localStorage.setItem("scoutName", fullName);
+            localStorage.setItem("scoutID", fullName)
+            setBase()
         } else {
             setName("ERROR! Wrong or invalid Scouting ID inputted");
         }

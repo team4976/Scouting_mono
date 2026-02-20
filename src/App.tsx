@@ -1,6 +1,6 @@
 import "./index.css";
 import { BrowserRouter, Routes, useNavigate, Route, useLocation} from 'react-router-dom';
-import { baseVlars, vlars, resetVlars} from "./Functions";
+import { baseVlars, vlars, resetVlars, updateVars} from "./Functions";
 //Page Imports
 import { HomePage } from "./HomePage";
 import { PrePage } from "./PreGame";
@@ -11,6 +11,7 @@ import { EndPage } from "./EndPage";
 import { PostPage } from "./PostPage";
 import { GenPage } from "./GenPage";
 import { SettingsPage } from "./SettingsPage";
+import { useEffect } from "react";
 
 let routes = ["/", "/pre", "/auto", "/active1", "/inactive1", "/active2", "/inactive2", "/end", "/post", "/gen", "/settings"]
 
@@ -19,6 +20,9 @@ type NavProps = {
   next: number;
 };
 export function App() {
+  useEffect(() => {
+    updateVars();
+  }, [])
   return (          
     <div className="screen">
       Ver 1

@@ -88,7 +88,7 @@ export function PackBits() {
   return(
     <div>
       <button className="navBut" onClick={testVal}>
-        Set test Vars
+        Test Data
       </button>
       <button className="navBut" onClick={packBits}>
         Pack Bits

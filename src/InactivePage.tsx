@@ -30,13 +30,15 @@ export function Inactive1Page(){
                 <div className="column">
                 <div className="subTitle">Breakdowns</div>
                 <Tally
-                vlar={"break"}/>
+                vlar={"break"}
+                max={15}/>
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                 <div className="subTitle">Recoveries</div>
                 <Tally
-                vlar={"recover"}/>
+                vlar={"recover"}
+                max={15}/>
                 </div>
             </div>
             <NavIA lastlose={3} lastwin={2} nextlose={5} nextwin={3}/>
@@ -74,13 +76,16 @@ export function Inactive2Page(){
                 <div className="subTitle">Breakdowns</div>
                 <Tally
                 vlar={"break"}
+                max={15}
                 />
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                 <div className="subTitle">Recoveries</div>
                 <Tally
-                vlar={"recover"}/>
+                vlar={"recover"}
+                max={15}
+                />
                 </div>
             </div>
             <NavIA nextlose={7} nextwin={5} lastlose={5} lastwin={3}/>

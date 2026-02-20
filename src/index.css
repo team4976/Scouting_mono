@@ -20,8 +20,8 @@
     text-align: center;
     font-size: large;
     border-bottom: solid black 1px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /*Alignment classes*/
@@ -174,9 +174,11 @@
     border-radius: 10px;
     background-color: white;
     margin: 0px 5px;
-    margin-bottom: 10px;
     text-align: center;
-    font-size: large;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-size: medium;
 }
 
 .tallyButton:active{

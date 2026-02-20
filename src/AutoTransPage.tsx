@@ -8,39 +8,57 @@ export function AutoTransPage() {
             <div className="title">AUTO/TRANSITION</div>
             <div className="subTitle">Fuel Scored</div>
             <Score
+            max={64}
             vlar={"autoscore"}/>
             <div className="subTitle">Fuel Missed</div>
             <Score
+            max={16}
             vlar={"automiss"}/>
             <div className="spacer2"/>
-            <div className="subTitle">Fuel Collection</div>
+            <div className="subTitle">Collection</div>
             <div className="row">
-                <div className="column">
-                    <div className="subTitle">Collect Outpost</div>
-                    <Checkbox
-                    vlar={"autooutp"}
-                    />
-                </div>
+                
                 <div className="spacer1"/>
                 <div className="column">
-                    <div className="subTitle">Move Fuel</div>
+                    <div className="subTitle">Depot</div>
+                    <Checkbox
+                    vlar={"autodepo"}
+                    />
+                    </div>
+                
+                <div className="spacer1"/>
+                <div className="column">
+                    <div className="subTitle">Fuel</div>
                     <Checkbox
                     vlar={"autocollect"}
                     />
                 </div>
-                <div className="spacer1"/>
+
+                 <div className="spacer1"/>
                 <div className="column">
-                    <div className="subTitle">Collect Depot</div>
+                    <div className="subTitle">Outpost</div>
                     <Checkbox
-                    vlar={"autodepo"}
+                    vlar={"autooutp"}
                     />
-                </div>
+                    </div>
+                    
+                
+               
+                    
+          
+                
+                
             </div>
+  
+                
+                
+
+
             <div className="spacer2"/>
             <div className="subTitle">Climbing</div>
             <div className="row">
                 <div className="column">
-                    <div className="subTitle">Climbed</div>
+                    <div className="subTitle">Climb</div>
                     <Checkbox
                     vlar={"autoclimb"}
                     />
@@ -54,28 +72,33 @@ export function AutoTransPage() {
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
-                  <div className="subTitle">Failed</div>
+                  <div className="subTitle">Fail</div>
                   <Checkbox
                   vlar={"autofailed"}/>
                 </div>
             </div>
-            <div className="subTitle">Win Auto</div>
-            <Checkbox
-            vlar={"autowin"}
-            />
+            
             <div className="row">
                 <div className="column">
                 <div className="subTitle">Breakdowns</div>
                 <Tally
+                max={15}
                 vlar={"break"}/>
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                 <div className="subTitle">Recoveries</div>
                 <Tally
+                max={15}
                 vlar={"recover"}/>
                 </div>
             </div>
+
+            <div className="subTitle">Win Auto</div>
+            <Checkbox
+            vlar={"autowin"}
+            />
+            
             <NavIA lastlose={1} lastwin={1} nextlose={3} nextwin={4}/>
         </div>
     )

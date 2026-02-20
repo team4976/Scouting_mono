@@ -9,13 +9,15 @@ export function EndPage() {
             <div className="column">
                 <div className="subTitle">Fuel Scored</div>
                 <Score
-                vlar={"endscore"}/>
+                vlar={"endscore"}
+                max={255}/>
             </div>
             <div className="spacer1"/>
             <div className="column">
                 <div className="subTitle">Fuel Missed</div>
                 <Score
-                vlar={"endmiss"}/>
+                vlar={"endmiss"}
+                max={127}/>
             </div>
             <div className="subTitle">Climb</div>
             <div className="row">
@@ -25,13 +27,15 @@ export function EndPage() {
                 <div className="column">
                 <div className="subTitle">Breakdowns</div>
                 <Tally
-                vlar={"break"}/>
+                vlar={"break"}
+                max={15}/>
                 </div>
                 <div className="spacer1"/>
                 <div className="column">
                 <div className="subTitle">Recoveries</div>
                 <Tally
-                vlar={"recover"}/>
+                vlar={"recover"}
+                max={15}/>
                 </div>
             </div>
             <NavIA lastlose={6} lastwin={5} nextwin={8} nextlose={8}/>

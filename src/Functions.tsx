@@ -96,7 +96,13 @@ type TextProps = {
 export function TextBox({vlar, tip, max}: TextProps) {
   const [text, setText] = useState(vlars[vlar] || '');
 const handleChange = (event) => {
-  let newText = Number(event.target.value);
+  let newText
+  if (isNaN(Number(event.target.value))) {
+    console.log("NOOOOOOOOOOOOOOOOOOOOOOOO")
+    newText = 0;
+  } else {
+    newText = Number(event.target.value)
+  }
   if (newText > max) {
     newText = max
   }

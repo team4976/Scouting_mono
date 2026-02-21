@@ -49,20 +49,29 @@ export let vlars = {
 }
 
 export let baseVlars = setBase(); 
+export let history: string[] = []
 
 export function setBase () {
   let ls = localStorage.getItem("baseVlars")
   if (ls != undefined) {
-    console.log(ls)
     return JSON.parse(ls)
   } else {
-    console.log(ls)
-    console.log(vlars)
     return {...vlars}
   }
 } 
 export function updateVars () {
-  //Were gonna rock in here
+  baseVlars = setBase()
+  let dat = localStorage.getItem("vars")
+  if (dat == undefined){
+    vlars = baseVlars
+  } else {
+    vlars = JSON.parse(dat)
+  }
+}
+
+function saveVars() {
+  const dat = JSON.stringify(vlars)
+  localStorage.setItem("vars", dat)
 }
 let touched = false //to see if the color box had been touched yet
 let tog1 = false //toggle for red
@@ -93,7 +102,7 @@ const handleChange = (event) => {
   }
   setText(String(newText));
   vlars[vlar] = String(newText);
-  console.log (vlars[vlar]);
+  saveVars()
 }
   return(
     <input
@@ -131,6 +140,7 @@ export function TeamBox() {
       setch1(false)
       touched = false
     }
+    saveVars()
   }
 
   const handleCheck2 = () => {
@@ -144,6 +154,7 @@ export function TeamBox() {
       setch2(false)
       touched = false
     }
+    saveVars()
   }
   return(
     <div className="row">
@@ -175,6 +186,7 @@ export function CardBox() {
     vlars.yellow = newCh1
     setCheck1(newCh1)
     setCheck2(false)
+    saveVars()
   }
 
   const handleCheck2 = (event) => {
@@ -183,6 +195,7 @@ export function CardBox() {
     vlars.yellow = false
     setCheck2(newCh2)
     setCheck1(false)
+    saveVars()
   }
   return(
     <div className="row">
@@ -211,7 +224,7 @@ export function Checkbox({vlar}) {
     const newType = event.target.checked;
     setCheck(newType);
     vlars[vlar] = newType;
-    console.log (vlars[vlar]);
+    saveVars()
   }
   return(
       <input
@@ -232,10 +245,12 @@ export function Tally({vlar, max}) {
     if (numb >= max){
       setNum(vlars[vlar]=(max))
     }
+    saveVars()
   }
 
   const handleSub = () => {
-        setNum(vlars[vlar]=Math.max(0, numb -1))
+    setNum(vlars[vlar]=Math.max(0, numb -1))
+    saveVars()
   }
   return(
     <div className="row">
@@ -261,23 +276,27 @@ export function Score({vlar, max}) {
     setNum(vlars[vlar]=Math.max(0, numb +1))
     if (numb >= max){
       setNum(vlars[vlar]=(max))
+    }
+    saveVars()
   }
-}
 
 
   const handleAdd5 = () => {
      setNum(vlars[vlar]=Math.max(0, numb +5))
     if (numb >= max){
       setNum(vlars[vlar]=(max))
+    }
+    saveVars()
   }
-}
 
   const handleSub = () => {
     setNum(vlars[vlar]=Math.max(0, numb -1))
+    saveVars()
   }
 
   const handleSub5 = () => {
     setNum(vlars[vlar]=Math.max(0, numb -5))
+    saveVars()
   }
 
   return(
@@ -351,8 +370,8 @@ export function ClimbBox() {
       checkL3(false)
       checkLF(false)
       vlars.endclimb = 1
-      console.log(vlars.endclimb)
     }
+    saveVars()
   }
 
   const handleCheck2 = () => {
@@ -369,7 +388,7 @@ export function ClimbBox() {
       checkLF(false)
       vlars.endclimb = 2
     }
-    console.log(vlars.endclimb)
+    saveVars()
   }
 
   const handleCheck3 = () => {
@@ -385,9 +404,8 @@ export function ClimbBox() {
       checkL3(true)
       checkLF(false)
       vlars.endclimb = 3
-      console.log(vlars.endclimb)
     }
-
+    saveVars()
   }
 
   const handleCheckF = () => {
@@ -406,7 +424,7 @@ export function ClimbBox() {
       vlars.endclimb = 0;
       vlars.fall = false;
     }
-    console.log(vlars.endclimb)
+    saveVars()
   }
   return(
     <div className="row">
@@ -461,5 +479,13 @@ const [listv, setListv] = useState(vlars)
 }
 
 export function resetVlars () {
+  if (history[4] == undefined){
+    history.push(JSON.stringify(vlars))
+  } else {
+    history = history.slice(1, 5)
+    history.push(JSON.stringify(vlars))
+  }
+  console.log(history)
   vlars = baseVlars
+  localStorage.setItem("vars", JSON.stringify(vlars))
 }

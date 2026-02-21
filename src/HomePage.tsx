@@ -7,7 +7,6 @@ export function HomePage() {
             <div className="title">HOME PAGE</div>
                   <StartBut/>
                   <SettBut/>
-                  <QrBut/>
                   <HistoryBut/>
         </div>
     )

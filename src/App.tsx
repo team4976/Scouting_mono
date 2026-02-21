@@ -12,8 +12,9 @@ import { PostPage } from "./PostPage";
 import { GenPage } from "./GenPage";
 import { SettingsPage } from "./SettingsPage";
 import { useEffect } from "react";
+import { HistoryPage } from "./HistoryPage";
 
-let routes = ["/", "/pre", "/auto", "/active1", "/inactive1", "/active2", "/inactive2", "/end", "/post", "/gen", "/settings"]
+let routes = ["/", "/pre", "/auto", "/active1", "/inactive1", "/active2", "/inactive2", "/end", "/post", "/gen", "/settings", "/history"]
 
 type NavProps = {
   last: number;
@@ -39,6 +40,7 @@ export function App() {
             <Route path="/post" element={<PostPage/>} />
             <Route path="/gen" element={<GenPage/>} />
             <Route path="/settings" element={<SettingsPage/>} />
+            <Route path="/history" element={<HistoryPage/>} />
           </Routes>
         </BrowserRouter>
     </div>
@@ -173,11 +175,15 @@ export function NavIA(props: NavIAProps) {
     </div>
   )
 }
-export function HomeBut() {
+
+export function HomeBut({reset}) {
   const navigate = useNavigate(); 
   const handleClick = () => {
+    if (reset == true) {
+      resetVlars();
+    }
     navigate('/');
-    resetVlars();
+
   };
   return(
    <button className="navBut" onClick={handleClick}>

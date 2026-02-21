@@ -41,6 +41,7 @@ const students = [
     "Charlotte P",
     "Neev P",
     "Faizan R",
+    "Daniel R",
     "Matthew R",
     "Quentin R",
     "Ben R",
@@ -103,7 +104,7 @@ export function SettingsPage() {
     return(
         <div className="screen">
             This is the settings page
-            <TextBox tip={"Student ID"} vlar="sid"/>
+            <TextBox tip={"Student ID"} vlar="sid" max={50}/>
             <SaveBut/>
             <HomeBut/>
         </div>

@@ -138,3 +138,39 @@ export function genCodeValue() {
   const barData = hexBits.join(",")
   return(barData)
 }
+
+export function genCodeValueEX(value) {
+  let autoclm
+    if (value.autoclimb == true) {
+      if (value.autodown == true) {
+        autoclm = 3
+      } else if (value.autofailed == true){
+        autoclm = 2
+      } else {
+        autoclm = 1
+      }
+    } else {
+      autoclm = 0
+  }
+  let telescore = value.a1score + value.a2score + value.endscore
+  let telemiss = value.a1miss + value.a2miss + value.endmiss
+  const Bits = new Uint8Array(10)
+  Bits[0] = (((Number(value.color) & 0x01) << 7) | ((Number(value.teamno) & 0x1F) << 2) | ((Number(value.noshow) & 0x01) << 1) | (Number(value.autocollect) & 0x01))
+  Bits[1] = (((Number(value.matchno) & 0x007f) << 1) | (Number(value.autooutp) & 0x01))
+  Bits[2] = (((Number(value.autoscore) & 0x003f) << 2) | (Number(autoclm) & 0x003))
+  Bits[3] = (((Number(value.automiss) & 0x00f) << 4) | ((Number(value.autodepo) & 0x001) << 3) | ((Number(value.autocollect) & 0x001) << 2) |((Number(value.a1take) & 0x001) << 1) | (Number(value.a1outp) & 0x001))
+  Bits[4] = (Number(telescore) & 0x00ff)
+  Bits[5] = (((Number(telemiss) & 0x007f) << 1) | (Number(value.a2outp) & 0x001))
+  Bits[6] = (((Number(value.i1fill) & 0x001) << 7) | ((Number(value.i2fill) & 0x001) << 6) | ((Number(value.i1move) & 0x001) << 5) | ((Number(value.i2move) & 0x001) << 4) | ((Number(value.endclimb) & 0x003) << 2) | ((Number(value.yellow) & 0x001) << 1) | (Number(value.fall) & 0x0001))
+  Bits[7] = (((Number(value.red) & 0x001) << 7) | ((Number(value.fouls) & 0x003f) << 1) | (Number(value.a2outp) & 0x001))
+  Bits[8] = (((Number(value.break) & 0x000f) << 4) | (Number(value.recover) & 0x000f))
+  Bits[9] = (((Number(value.sid) & 0x003f) << 2) | ((Number(value.i1def) & 0x001) << 1) | (Number(value.i2def) & 0x001))
+  console.log(Bits)
+  console.log(Bits[2].toString(16))
+  let hexBits = new Array
+  Bits.forEach((bit) => {
+    hexBits.push(bit.toString(16))
+  })
+  const barData = hexBits.join(",")
+  return(barData)
+}

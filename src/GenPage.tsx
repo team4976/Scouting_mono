@@ -20,7 +20,7 @@ export function GenPage () {
             <ClearData/>
             <PackBits/>
             <Back/>
-            <HomeBut/>
+            <HomeBut reset={true}/>
         </div>
     )
 }

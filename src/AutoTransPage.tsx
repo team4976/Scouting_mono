@@ -28,7 +28,7 @@ export function AutoTransPage() {
                 
                 <div className="spacer1"/>
                 <div className="column">
-                    <div className="subTitle">Fuel</div>
+                    <div className="subTitle">Neutral</div>
                     <Checkbox
                     vlar={"autocollect"}
                     />

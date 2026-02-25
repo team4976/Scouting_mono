@@ -6,6 +6,7 @@ export function PostPage () {
     return(
         <div className="screen">
             <div className="title">POST GAME</div>
+            <div className="subTitle">Fouls</div>
             <TextBox vlar={"fouls"} tip={"Fouls"} max={63}/>
             <div className="spacer2"/>
             <div className="subTitle">Cards</div>

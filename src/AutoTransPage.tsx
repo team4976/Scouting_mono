@@ -8,7 +8,7 @@ export function AutoTransPage() {
             <div className="title">AUTO/TRANSITION</div>
             <div className="subTitle">Fuel Scored</div>
             <Score
-            max={64}
+            max={63}
             vlar={"autoscore"}/>
             <div className="subTitle">Fuel Missed</div>
             <Score
@@ -41,19 +41,8 @@ export function AutoTransPage() {
                     vlar={"autooutp"}
                     />
                     </div>
-                    
-                
-               
-                    
-          
-                
-                
             </div>
   
-                
-                
-
-
             <div className="spacer2"/>
             <div className="subTitle">Climbing</div>
             <div className="row">

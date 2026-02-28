@@ -17,8 +17,8 @@ export function GenPage () {
                 height={50}
             />
             <br/>
-            <ClearData/>
-            <PackBits/>
+            {/**<ClearData/>
+            <PackBits/>**/}
             <Back/>
             <HomeBut reset={true}/>
         </div>

@@ -176,11 +176,14 @@ export function NavIA(props: NavIAProps) {
   )
 }
 
+
 export function HomeBut({reset}) {
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
   const navigate = useNavigate(); 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (reset == true) {
       resetVlars();
+      await sleep(1000)
     }
     navigate('/');
 

@@ -9,13 +9,13 @@ export function Active1Page() {
             <div className="subTitle">Fuel Scored</div>
             <Score
             vlar={"a1score"}
-            max={255}
+            max={80}
             />
             <div className="spacer2"/>
             <div className="subTitle">Fuel Missed</div>
             <Score
             vlar={"a1miss"}
-            max={127}
+            max={43}
             />
             <div className="spacer2"/>
             <div className="row">
@@ -61,13 +61,13 @@ export function Active2Page() {
             <div className="subTitle">Fuel Scored</div>
             <Score
             vlar={"a2score"}
-            max={255}
+            max={80}
             />
             <div className="spacer2"/>
             <div className="subTitle">Fuel Missed</div>
             <Score
             vlar={"a2miss"}
-            max={127}
+            max={43}
             />
             <div className="spacer2"/>
             <div className="row">

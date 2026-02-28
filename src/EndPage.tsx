@@ -10,14 +10,14 @@ export function EndPage() {
                 <div className="subTitle">Fuel Scored</div>
                 <Score
                 vlar={"endscore"}
-                max={255}/>
+                max={94}/>
             </div>
             <div className="spacer1"/>
             <div className="column">
                 <div className="subTitle">Fuel Missed</div>
                 <Score
                 vlar={"endmiss"}
-                max={127}/>
+                max={42}/>
             </div>
             <div className="subTitle">Climb</div>
             <div className="row">

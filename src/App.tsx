@@ -26,7 +26,7 @@ export function App() {
   }, [])
   return (          
     <div className="screen">
-      Ver 1
+      Ver 2
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage/>} />

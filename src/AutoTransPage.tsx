@@ -12,7 +12,7 @@ export function AutoTransPage() {
             vlar={"autoscore"}/>
             <div className="subTitle">Fuel Missed</div>
             <Score
-            max={16}
+            max={15}
             vlar={"automiss"}/>
             <div className="spacer2"/>
             <div className="subTitle">Collection</div>

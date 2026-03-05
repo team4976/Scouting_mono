@@ -26,7 +26,7 @@ export function App() {
   }, [])
   return (          
     <div className="screen">
-      Ver 2
+      Ver 2.1
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage/>} />
@@ -183,7 +183,7 @@ export function HomeBut({reset}) {
   const handleClick = async () => {
     if (reset == true) {
       resetVlars();
-      await sleep(1000)
+      //await sleep(1000)
     }
     navigate('/');
 

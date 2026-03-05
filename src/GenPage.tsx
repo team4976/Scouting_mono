@@ -1,7 +1,7 @@
 import { Nav, HomeBut, Back } from "./App"
 import { useMemo } from "react"
 import { vlars, ClearData} from "./Functions"
-import { genCodeValue, PackBits } from "./BitPacking"
+import { genCodeValue } from "./BitPacking"
 import Barcode from "react-barcode"
 
 export function GenPage () {

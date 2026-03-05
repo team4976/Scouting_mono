@@ -45,7 +45,8 @@ export let vlars = {
   yellow: false,
   red: false,
   //Extra
-  sid: 0
+  sid: 0,
+  event: 0
 }
 
 export let baseVlars = setBase(); 
@@ -53,10 +54,103 @@ export let history: string[] = []
 
 export function setBase () {
   let ls = localStorage.getItem("baseVlars")
+  let rs = JSON.parse(ls)
   if (ls != undefined) {
-    return JSON.parse(ls)
+    return  {
+  //pregame
+  color: false,
+  noshow: false,
+  teamno: "",
+  matchno: "",
+  //auto/trans
+  autoscore: 0,
+  automiss: 0,
+  autoclimb: false,
+  autocollect: false,
+  autodown: false,
+  autofailed: false,
+  autooutp: false,
+  autodepo: false,
+  autowin: false,
+  //active
+  a1score: 0,
+  a1miss: 0,
+  a1outp: false,
+  a1take: false,
+  a2score: 0,
+  a2miss: 0 ,
+  a2outp: false,
+  a2take: false,
+  //inactive
+  i1def: false,
+  i1move: false,
+  i1fill: false,
+  i2def: false,
+  i2move: false,
+  i2fill: false,
+  //end
+  endscore: 0,
+  endmiss: 0,
+  endclimb: 0, //0 = no, 1 = l1, 2 = l2, 3 = l3
+  fall: false,
+  break: 0,
+  recover: 0,
+  //post
+  fouls: 0,
+  yellow: false,
+  red: false,
+  //Extra
+  sid: rs.sid,
+  event: rs.event
+}
   } else {
-    return {...vlars}
+    return  {
+  //pregame
+  color: false,
+  noshow: false,
+  teamno: "",
+  matchno: "",
+  //auto/trans
+  autoscore: 0,
+  automiss: 0,
+  autoclimb: false,
+  autocollect: false,
+  autodown: false,
+  autofailed: false,
+  autooutp: false,
+  autodepo: false,
+  autowin: false,
+  //active
+  a1score: 0,
+  a1miss: 0,
+  a1outp: false,
+  a1take: false,
+  a2score: 0,
+  a2miss: 0 ,
+  a2outp: false,
+  a2take: false,
+  //inactive
+  i1def: false,
+  i1move: false,
+  i1fill: false,
+  i2def: false,
+  i2move: false,
+  i2fill: false,
+  //end
+  endscore: 0,
+  endmiss: 0,
+  endclimb: 0, //0 = no, 1 = l1, 2 = l2, 3 = l3
+  fall: false,
+  break: 0,
+  recover: 0,
+  //post
+  fouls: 0,
+  yellow: false,
+  red: false,
+  //Extra
+  sid: 0,
+  event: 0
+}
   }
 } 
 export function updateVars () {
@@ -492,6 +586,9 @@ export function resetVlars () {
     history.push(JSON.stringify(vlars))
   }
   console.log(history)
+  console.log(baseVlars)
   vlars = baseVlars
   localStorage.setItem("vars", JSON.stringify(vlars))
+  console.log("Reset Variables")
+  console.log(localStorage.getItem("baseVlars"))
 }

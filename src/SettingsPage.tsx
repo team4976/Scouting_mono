@@ -13,8 +13,8 @@ const students = [
     "Aurora B",
     "Luke B",
     "Aaron C",
-    "Rebecca C", 
-    "Graeme D",
+    "Harrison Harrison", 
+    "Little boy",
     "Alexander D",
     "Saanvi D",
     "Sanav D", 
@@ -24,7 +24,7 @@ const students = [
     "Ben H",
     "Theo H",
     "Hudson H",
-    "Greg I",
+    "Gregory Meister",
     "Sakib I", 
     "Rikki J",
     "Aidan K",
@@ -100,13 +100,74 @@ function SaveBut() {
     );
 }
 
+function EventBox() {
+    let tog1 = true
+    let tog2 = false
+    if (vlars.event == 0) {
+        tog1 = true
+        tog2 = false
+    } else if (vlars.event == 1) {
+        tog1 = false
+        tog2 = true
+    }
+    const [ch1, setch1] = useState(tog1)
+    const [ch2, setch2] = useState(tog2)
+
+    const handleCheck1 = () => {
+        if (ch1 == false) {
+        vlars.color = false
+        setch1(true)
+        setch2(false)
+        } else {
+        setch1(false)
+        }
+    }
+
+    const handleCheck2 = () => {
+        if (ch2 == false) {
+        vlars.color = true
+        setch2(true)
+        setch1(false)
+        } else {
+        vlars.color = false
+        setch2(false)
+        }
+    }
+    return(
+        <div className="row">
+            <div className="column">
+                <div className="subtitle">Durham</div>
+                <input
+                    type="checkbox"
+                    className="checkboxG"
+                    onChange={handleCheck1}
+                    checked={ch1}
+                />
+            </div>
+
+            <div className="checkboxSpacer"/>
+            <div className="column">
+                <div className="subtitle">Waterloo</div>
+                <input
+                    type="checkbox"
+                    className="checkboxG"
+                    onChange={handleCheck2}
+                    checked={ch2}
+                />
+            </div>
+        </div>
+    )
+}
+
 export function SettingsPage() {
     return(
         <div className="screen">
             This is the settings page
             <TextBox tip={"Student ID"} vlar="sid" max={50}/>
+            <div className="spacer2"/>
+            <EventBox/>
             <SaveBut/>
-            <HomeBut/>
+            <HomeBut reset={false}/>
         </div>
     )
 

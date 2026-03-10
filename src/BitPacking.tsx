@@ -128,9 +128,11 @@ export function genCodeValue() {
   }
   let telescore = vlars.a1score + vlars.a2score + vlars.endscore
   let telemiss = vlars.a1miss + vlars.a2miss + vlars.endmiss
-  if (telemiss > 127){
-    telemiss = 127
+  if (telescore > 511){
+    telescore = 511
   }
+  telescore = Math.floor(telescore/2)
+  vlars.autoscore = Math.floor(vlars.autoscore/2)
  const Bits = new Uint8Array(11)
 
 Bits[0] = (((Number(vlars.color) & 0x01) << 7) |

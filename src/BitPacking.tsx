@@ -106,33 +106,39 @@ const save = () => {
 
 export function genCodeValue() {
   let teamid
+  let telemiss
+  let setTeam = false
   teamsDurham.forEach((value, index) => {
     console.log(value)
     console.log(vlars.teamno)
   if (value == vlars.teamno){
     console.log(index)
     teamid = index
+    setTeam = true
   }
 })
+if (!setTeam){
+  console.log("You biffed it.")
+  teamid = 31
+}
   let autoclm
     if (vlars.autoclimb == true) {
       if (vlars.autodown == true) {
-        autoclm = 3
+        autoclm = 3 //Climbed and got down
       } else if (vlars.autofailed == true){
-        autoclm = 2
+        autoclm = 2 //Climbed and failed
       } else {
-        autoclm = 1
+        autoclm = 1 //Just Climbed
       }
     } else {
-      autoclm = 0
+      autoclm = 0 //nutin
   }
   let telescore = vlars.a1score + vlars.a2score + vlars.endscore
-  let telemiss = vlars.a1miss + vlars.a2miss + vlars.endmiss
   if (telescore > 511){
     telescore = 511
   }
   telescore = Math.floor(telescore/2)
-  vlars.autoscore = Math.floor(vlars.autoscore/2)
+  let newautoscore = Math.floor(vlars.autoscore/2)
  const Bits = new Uint8Array(11)
 
 Bits[0] = (((Number(vlars.color) & 0x01) << 7) |
@@ -143,7 +149,7 @@ Bits[0] = (((Number(vlars.color) & 0x01) << 7) |
 Bits[1] = (((Number(vlars.matchno) & 0x7F) << 1) |
            (Number(vlars.autooutp) & 0x01))
 
-Bits[2] = (((Number(vlars.autoscore) & 0x3F) << 2) |
+Bits[2] = (((Number(newautoscore) & 0x3F) << 2) |
            (Number(autoclm) & 0x03))
 
 Bits[3] = (((Number(vlars.automiss) & 0x0F) << 4) |
@@ -205,14 +211,14 @@ export function genCodeValueEX(value) {
   let autoclm
     if (value.autoclimb == true) {
       if (value.autodown == true) {
-        autoclm = 3
+        autoclm = 3 //Climbed and got down
       } else if (value.autofailed == true){
-        autoclm = 2
+        autoclm = 2 // Climbed and failed to get down
       } else {
-        autoclm = 1
+        autoclm = 1 // Climbed and didnt get down
       }
     } else {
-      autoclm = 0
+      autoclm = 0 // Didnt climb
   }
   let telescore = value.a1score + value.a2score + value.endscore
   let telemiss = value.a1miss + value.a2miss + value.endmiss

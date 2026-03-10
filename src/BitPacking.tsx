@@ -106,7 +106,7 @@ const save = () => {
 
 export function genCodeValue() {
   let teamid
-  let telemiss
+  let telemiss = vlars.a1miss + vlars.a2miss + vlars.endmiss
   let setTeam = false
   teamsDurham.forEach((value, index) => {
     console.log(value)
@@ -137,8 +137,8 @@ if (!setTeam){
   if (telescore > 511){
     telescore = 511
   }
-  telescore = Math.floor(telescore/2)
-  let newautoscore = Math.floor(vlars.autoscore/2)
+  const packedTeleScore = Math.floor(telescore / 2)
+  const packedAutoScore = Math.floor(vlars.autoscore / 2)
  const Bits = new Uint8Array(11)
 
 Bits[0] = (((Number(vlars.color) & 0x01) << 7) |
@@ -149,7 +149,7 @@ Bits[0] = (((Number(vlars.color) & 0x01) << 7) |
 Bits[1] = (((Number(vlars.matchno) & 0x7F) << 1) |
            (Number(vlars.autooutp) & 0x01))
 
-Bits[2] = (((Number(newautoscore) & 0x3F) << 2) |
+Bits[2] = (((Number(packedAutoScore) & 0x3F) << 2) |
            (Number(autoclm) & 0x03))
 
 Bits[3] = (((Number(vlars.automiss) & 0x0F) << 4) |
@@ -158,7 +158,7 @@ Bits[3] = (((Number(vlars.automiss) & 0x0F) << 4) |
            ((Number(vlars.a1take) & 0x01) << 1) |
            (Number(vlars.a1outp) & 0x01))
 
-Bits[4] = Number(telescore) & 0xFF
+Bits[4] = Number(packedTeleScore) & 0xFF
 
 Bits[5] = (((Number(telemiss) & 0x7F) << 1) |
            (Number(vlars.a2outp) & 0x01))

@@ -1,13 +1,9 @@
-import { Nav, HomeBut, Back } from "./App"
-import { useMemo } from "react"
-import { vlars, ClearData} from "./Functions"
+import { HomeBut, Back } from "./App"
 import { genCodeValue } from "./BitPacking"
 import Barcode from "react-barcode"
 
 export function GenPage () {
-    const barcodeValue = useMemo(() => {
-    return genCodeValue();
-    }, [vlars]);
+    const barcodeValue = genCodeValue();
     return(
         <div className="screen">
             <Barcode 

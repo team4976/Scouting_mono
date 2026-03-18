@@ -1,7 +1,9 @@
 import "./index.css"
 import { useState, useEffect } from "react";
-//Variables were tracking
-export let vlars = {
+import { matchesDurham } from "./Matches";
+
+
+const defaultVlars = {
   //pregame
   color: false,
   noshow: false,
@@ -46,121 +48,63 @@ export let vlars = {
   red: false,
   //Extra
   sid: 0,
-  event: 0
+  event: 0,
+  position: 0,
+}
+
+type Vlars = typeof defaultVlars;
+
+function createVlars(overrides: Partial<Vlars> = {}): Vlars {
+  return {
+    ...defaultVlars,
+    ...overrides,
+  };
+}
+
+function readStoredVlars(key: string): Partial<Vlars> | null {
+  const storedValue = localStorage.getItem(key);
+
+  if (storedValue == null) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(storedValue);
+  } catch (error) {
+    console.error(`Unable to parse ${key} from localStorage`, error);
+    return null;
+  }
+}
+
+function loadVars(base: Vlars): Vlars {
+  const storedVars = readStoredVlars("vars");
+
+  if (storedVars == null) {
+    return createVlars(base);
+  }
+
+  return createVlars({
+    ...base,
+    ...storedVars,
+  });
 }
 
 export let baseVlars = setBase(); 
 export let history: string[] = []
+export let vlars = loadVars(baseVlars)
 
 export function setBase () {
-  let ls = localStorage.getItem("baseVlars")
-  let rs = JSON.parse(ls)
-  if (ls != undefined) {
-    return  {
-  //pregame
-  color: false,
-  noshow: false,
-  teamno: "",
-  matchno: "",
-  //auto/trans
-  autoscore: 0,
-  automiss: 0,
-  autoclimb: false,
-  autocollect: false,
-  autodown: false,
-  autofailed: false,
-  autooutp: false,
-  autodepo: false,
-  autowin: false,
-  //active
-  a1score: 0,
-  a1miss: 0,
-  a1outp: false,
-  a1take: false,
-  a2score: 0,
-  a2miss: 0 ,
-  a2outp: false,
-  a2take: false,
-  //inactive
-  i1def: false,
-  i1move: false,
-  i1fill: false,
-  i2def: false,
-  i2move: false,
-  i2fill: false,
-  //end
-  endscore: 0,
-  endmiss: 0,
-  endclimb: 0, //0 = no, 1 = l1, 2 = l2, 3 = l3
-  fall: false,
-  break: 0,
-  recover: 0,
-  //post
-  fouls: 0,
-  yellow: false,
-  red: false,
-  //Extra
-  sid: rs.sid,
-  event: rs.event
-}
-  } else {
-    return  {
-  //pregame
-  color: false,
-  noshow: false,
-  teamno: "",
-  matchno: "",
-  //auto/trans
-  autoscore: 0,
-  automiss: 0,
-  autoclimb: false,
-  autocollect: false,
-  autodown: false,
-  autofailed: false,
-  autooutp: false,
-  autodepo: false,
-  autowin: false,
-  //active
-  a1score: 0,
-  a1miss: 0,
-  a1outp: false,
-  a1take: false,
-  a2score: 0,
-  a2miss: 0 ,
-  a2outp: false,
-  a2take: false,
-  //inactive
-  i1def: false,
-  i1move: false,
-  i1fill: false,
-  i2def: false,
-  i2move: false,
-  i2fill: false,
-  //end
-  endscore: 0,
-  endmiss: 0,
-  endclimb: 0, //0 = no, 1 = l1, 2 = l2, 3 = l3
-  fall: false,
-  break: 0,
-  recover: 0,
-  //post
-  fouls: 0,
-  yellow: false,
-  red: false,
-  //Extra
-  sid: 0,
-  event: 0
-}
-  }
+  const storedBase = readStoredVlars("baseVlars")
+
+  return createVlars({
+    sid: Number(storedBase?.sid ?? 0),
+    event: Number(storedBase?.event ?? 0),
+    position: Number(storedBase?.position ?? 1),
+  })
 } 
 export function updateVars () {
   baseVlars = setBase()
-  let dat = localStorage.getItem("vars")
-  if (dat == undefined){
-    vlars = baseVlars
-  } else {
-    vlars = JSON.parse(dat)
-  }
+  vlars = loadVars(baseVlars)
 }
 
 function saveVars() {
@@ -192,7 +136,6 @@ export function TextBox({vlar, tip, max}: TextProps) {
 const handleChange = (event) => {
   let newText
   if (isNaN(Number(event.target.value))) {
-    console.log("NOOOOOOOOOOOOOOOOOOOOOOOO")
     newText = 0;
   } else {
     newText = Number(event.target.value)
@@ -585,10 +528,67 @@ export function resetVlars () {
     history = history.slice(1, 5)
     history.push(JSON.stringify(vlars))
   }
-  console.log(history)
-  console.log(baseVlars)
-  vlars = baseVlars
+  baseVlars = setBase()
+  vlars = createVlars(baseVlars)
   localStorage.setItem("vars", JSON.stringify(vlars))
-  console.log("Reset Variables")
-  console.log(localStorage.getItem("baseVlars"))
 }
+
+//My funky magic box to auto set the team number
+export function TeamNumberField () {
+  const [matchno, setMatchNo] = useState(vlars.matchno || 0)
+  const [teamno, setTeamNo] = useState(vlars.teamno || 0)
+  const handleChangeMatch = (event) => {
+    let newText
+    if (isNaN(Number(event.target.value))) {
+      newText = 0;
+    } else {
+      newText = Number(event.target.value)
+    }
+    vlars.matchno = String(newText)
+    setMatchNo(vlars.matchno)
+    let newTeamArray = String(matchesDurham[Number(newText)-1]).split(",")
+    let newTeamNo = String(newTeamArray[vlars.position-1])
+    console.log("Base: ")
+    console.log(baseVlars)
+    console.log("Live: ")
+    console.log(vlars)
+    if (newTeamNo == undefined || vlars.matchno == "0" || Number(vlars.matchno) > matchesDurham.length) {
+      vlars.teamno = "31"
+      setTeamNo("0")
+    } else {
+      vlars.teamno = newTeamNo
+      setTeamNo(vlars.teamno)
+    }
+  }
+  const handleChangeTeam = (event) => {
+    let newText
+    if (isNaN(Number(event.target.value))) {
+      newText = 0;
+    } else {
+      newText = Number(event.target.value)
+    }
+    vlars.teamno = String(newText)
+    setTeamNo(vlars.teamno)
+  }
+  return (
+    <div className="collumn">
+      <div className="subTitle">Match #</div>
+      <input
+        type="text"
+        placeholder={"Match Number"}
+        className="inputText"
+        value={matchno}
+        onChange={handleChangeMatch}
+      />
+      <div className="subTitle">Team #</div>
+      <input
+        type="text"
+        placeholder={"Team Number"}
+        className="inputText"
+        value={teamno}
+        onChange={handleChangeTeam}
+      />
+    </div>
+  )
+}
+

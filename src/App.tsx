@@ -26,7 +26,7 @@ export function App() {
   }, [])
   return (          
     <div className="screen">
-      Ver 2.3
+      Ver 2.5
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage/>} />
@@ -107,7 +107,6 @@ export function Nav(props: NavProps) {
   };
   const handleClick2 = () => {
       navigate(String(routes[next]))
-      console.log(vlars)
 
   }
   return(

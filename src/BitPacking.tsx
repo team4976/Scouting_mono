@@ -1,10 +1,8 @@
 import { vlars } from "./Functions"
-const teamsDurham = ["188", "781", "1241", "2708", "3543", "4152", "4476", "4946", "4976", "5024", "5032", "5036", "5409", "5596", "5689", "5870", "6135", "7480", "7603", "7712", "7712", "7757", "7902", "8089", "8729", "9569", "9589", "10015", "11227"]
-const teamsWaterloo = ["610", "772", "1334", "2200", "2386", "2609", "2702", "3683", "3756", "4308", "4617", "4678", "4917", "4940", "4946", "4976","5408", "5409", "5870", "5912", "6725", "6854", "6875", "6975","7058", "8089", "8764", "9098", "9263", "10514", "11227"]
+const teams = ["610", "772", "1334", "2200", "2386", "2609", "2702", "3683", "3756", "4308", "4617", "4678", "4917", "4940", "4946", "4976","5408", "5409", "5870", "5912", "6725", "6854", "6875", "6975","7058", "8089", "8764", "9098", "9263", "10514", "11227"]
 
 const save = () => {
     localStorage.setItem("data", JSON.stringify(vlars))
-    
   }
   
 
@@ -12,7 +10,7 @@ export function genCodeValue() {
   let teamid
   let telemiss = vlars.a1miss + vlars.a2miss + vlars.endmiss
   let setTeam = false
-  teamsDurham.forEach((value, index) => {
+  teams.forEach((value, index) => {
     if (value == vlars.teamno){
       teamid = index
       setTeam = true
@@ -82,8 +80,11 @@ Bits[9] = (((Number(vlars.sid) & 0x3F) << 2) |
            ((Number(vlars.i1def) & 0x01) << 1) |
            (Number(vlars.i2def) & 0x01))
 
-Bits[10] = Number(vlars.autowin) & 0xFF
-
+Bits[10] = (((Number(vlars.autowin) & 0x01) << 7) |
+            ((Number(vlars.enterMid) & 0x01) << 6) |
+            ((Number(vlars.crossMid) & 0x01) << 5) |
+            ((Number(vlars.startingPosition) & 0x03) << 3))
+console.log(Bits)
 function uint8ToBase64(uint8) {
   let binary = ""
   for (let i = 0; i < uint8.length; i++) {
@@ -98,7 +99,7 @@ return (uint8ToBase64(Bits).replace("=", ""))
 //Not needed i dont think
 export function genCodeValueEX(value) {
   let teamid
-  teamsDurham.forEach((values, index) => {
+  teams.forEach((values, index) => {
   if (values == value.teamno){
     teamid = index
   }

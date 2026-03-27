@@ -1,5 +1,5 @@
 import "./index.css";
-import { Score, Checkbox, Tally } from "./Functions";
+import { Score, Checkbox, Tally, AutoBehaviour } from "./Functions";
 import { NavIA } from "./App";
 
 export function AutoTransPage() {
@@ -62,7 +62,9 @@ export function AutoTransPage() {
                   vlar={"autofailed"}/>
                 </div>
             </div>
-            
+            <div className="spacer2"/>
+            <div className="subTitle">Movement in Auto</div>
+            <AutoBehaviour/>
             <div className="row">
                 <div className="column">
                 <div className="subTitle">Breakdowns</div>

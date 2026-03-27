@@ -1,6 +1,6 @@
 import "./index.css"
-import { useState, useEffect } from "react";
-import { matchesDurham } from "./Matches";
+import { useState, useEffect, use } from "react";
+import { matches } from "./Matches";
 
 
 const defaultVlars = {
@@ -9,6 +9,7 @@ const defaultVlars = {
   noshow: false,
   teamno: "",
   matchno: "",
+  startingPosition: 0,
   //auto/trans
   autoscore: 0,
   automiss: 0,
@@ -19,6 +20,8 @@ const defaultVlars = {
   autooutp: false,
   autodepo: false,
   autowin: false,
+  enterMid: false,
+  crossMid: false,
   //active
   a1score: 0,
   a1miss: 0,
@@ -48,7 +51,6 @@ const defaultVlars = {
   red: false,
   //Extra
   sid: 0,
-  event: 0,
   position: 0,
 }
 
@@ -546,14 +548,14 @@ export function TeamNumberField () {
     }
     vlars.matchno = String(newText)
     setMatchNo(vlars.matchno)
-    let newTeamArray = String(matchesDurham[Number(newText)-1]).split(",")
+    let newTeamArray = String(matches[Number(newText)-1]).split(",")
     let newTeamNo = String(newTeamArray[vlars.position-1])
     console.log("Base: ")
     console.log(baseVlars)
     console.log("Live: ")
     console.log(vlars)
-    if (newTeamNo == undefined || vlars.matchno == "0" || Number(vlars.matchno) > matchesDurham.length) {
-      vlars.teamno = "31"
+    if (newTeamNo == "undefined" || vlars.matchno == "0" || Number(vlars.matchno) > matches.length) {
+      vlars.teamno = "0"
       setTeamNo("0")
     } else {
       vlars.teamno = newTeamNo
@@ -571,7 +573,7 @@ export function TeamNumberField () {
     setTeamNo(vlars.teamno)
   }
   return (
-    <div className="collumn">
+    <div className="column">
       <div className="subTitle">Match #</div>
       <input
         type="text"
@@ -592,3 +594,136 @@ export function TeamNumberField () {
   )
 }
 
+export function StartingPositionBox () {
+  let pos1
+  let pos2
+  let pos3
+  if (vlars.startingPosition == 0) {
+    pos1 = false
+    pos2 = false
+    pos3 = false
+  } else if (vlars.startingPosition == 1) {
+    pos1 = true
+    pos2 = false
+    pos3 = false
+  } else if (vlars.startingPosition == 2) {
+    pos1 = false
+    pos2 = true
+    pos3 = false
+  } else {
+    pos1 = false
+    pos2 = false
+    pos3 = true
+  }
+  const [chk1, changeChk1] = useState(pos1)
+  const [chk2, changeChk2] = useState(pos2)
+  const [chk3, changeChk3] = useState(pos3)
+  const handleCheck1 = () => {
+    if (chk1 == true) {
+      changeChk1(false)
+      vlars.startingPosition = 0
+    } else {
+      changeChk1(true)
+      changeChk2(false)
+      changeChk3(false)
+      vlars.startingPosition = 1
+    }
+  }
+  const handleCheck2 = () => {
+    if (chk2 == true) {
+      changeChk2(false)
+      vlars.startingPosition = 0
+    } else {
+      changeChk1(false)
+      changeChk2(true)
+      changeChk3(false)
+      vlars.startingPosition = 2
+    }
+  }
+  const handleCheck3 = () => {
+    if (chk3 == true) {
+      changeChk1(false)
+      vlars.startingPosition = 0
+    } else {
+      changeChk1(false)
+      changeChk2(false)
+      changeChk3(true)
+      vlars.startingPosition = 3
+    }
+  }
+  return(
+    <div className="row">
+      <div className="column">
+        <div className="subTitle">Outpost</div>
+        <input
+            type="checkbox"
+            className="checkboxG"
+            onChange={handleCheck1}
+            checked={chk1}
+          />
+      </div>
+      <div className="spacer1"/>
+      <div className="column">
+        <div className="subTitle">Ladder</div>
+        <input
+            type="checkbox"
+            className="checkboxG"
+            onChange={handleCheck2}
+            checked={chk2}
+          />
+      </div>
+      <div className="spacer1"/>
+      <div className="column">
+        <div className="subTitle">Depot</div>
+        <input
+            type="checkbox"
+            className="checkboxG"
+            onChange={handleCheck3}
+            checked={chk3}
+        />
+      </div>
+    </div>
+  )
+}
+
+export function AutoBehaviour() {
+  const [ch1, setCheck1] = useState(vlars.enterMid || false)
+  const [ch2, setCheck2] = useState(vlars.crossMid || false)
+
+  const handleCheck1 = (event) => {
+    const newCh1 = event.target.checked
+    vlars.enterMid = newCh1
+    setCheck1(newCh1)
+    saveVars()
+  }
+
+  const handleCheck2 = (event) => {
+    const newCh2 = event.target.checked
+    vlars.crossMid = newCh2
+    setCheck2(newCh2)
+    saveVars()
+  }
+  return(
+    <div className="row">
+      <div className="column">
+        <div className="subTitle">Entered Neutral</div>
+        <input
+            type="checkbox"
+            className="checkboxG"
+            onChange={handleCheck1}
+            checked={ch1}
+        />
+      </div>
+      <div className="spacer1"/>
+      <div className="column">
+        <div className="subTitle">Crossed Middle</div>
+        <input
+            type="checkbox"
+            className="checkboxG"
+            onChange={handleCheck2}
+            checked={ch2}
+        />
+      </div>
+    </div>
+  )
+}

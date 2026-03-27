@@ -1,5 +1,5 @@
 import "./index.css"
-import { TeamBox, Checkbox, TeamNumberField } from "./Functions"
+import { TeamBox, Checkbox, TeamNumberField, StartingPositionBox } from "./Functions"
 import { Nav } from "./App"
 
 export function PrePage() {
@@ -9,6 +9,8 @@ export function PrePage() {
             <TeamNumberField/>
             <div className="subTitle">Team Color</div>
             <TeamBox/>
+            <div className="subTitle">Starting Position</div>
+            <StartingPositionBox/>
             <div className="subTitle">No Show</div>
             <Checkbox vlar={"noshow"}/>
             <Nav last={0} next={2}/>

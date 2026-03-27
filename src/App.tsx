@@ -26,7 +26,7 @@ export function App() {
   }, [])
   return (          
     <div className="screen">
-      Ver 2.5
+      Ver 3.3
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage/>} />
@@ -103,10 +103,12 @@ export function Nav(props: NavProps) {
 
   const navigate = useNavigate(); 
   const handleClick1 = () => {
+    console.log(vlars)
     navigate(String(routes[last]))
   };
   const handleClick2 = () => {
-      navigate(String(routes[next]))
+    console.log(vlars)
+    navigate(String(routes[next]))
 
   }
   return(

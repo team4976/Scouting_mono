@@ -7,8 +7,10 @@ export function PrePage() {
         <div className="screen">
             <div className="title">PRE-GAME</div>
             <TeamNumberField/>
+            {/*
             <div className="subTitle">Team Color</div>
             <TeamBox/>
+            */}
             <div className="subTitle">Starting Position</div>
             <StartingPositionBox/>
             <div className="subTitle">No Show</div>

@@ -35,6 +35,11 @@ if (!setTeam){
   if (telescore > 511){
     telescore = 511
   }
+  if (vlars.position >= 4) {
+    vlars.color = false
+  } else {
+    vlars.color = true
+  }
   const packedTeleScore = Math.floor(telescore / 2)
   const packedAutoScore = Math.floor(vlars.autoscore / 2)
  const Bits = new Uint8Array(11)

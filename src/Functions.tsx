@@ -27,10 +27,12 @@ const defaultVlars = {
   a1miss: 0,
   a1outp: false,
   a1take: false,
+  a1defend:false,
   a2score: 0,
   a2miss: 0 ,
   a2outp: false,
   a2take: false,
+  a2defend: false,
   //inactive
   i1def: false,
   i1move: false,
@@ -325,6 +327,13 @@ export function Score({vlar, max}) {
     saveVars()
   }
 
+    const handleAdd10 = () => {
+     setNum(vlars[vlar]=Math.max(0, numb +10))
+    if (numb >= max){
+      setNum(vlars[vlar]=(max))
+    }
+    saveVars()
+  }
 
   const handleAdd5 = () => {
      setNum(vlars[vlar]=Math.max(0, numb +5))
@@ -344,8 +353,17 @@ export function Score({vlar, max}) {
     saveVars()
   }
 
+  const handleSub10 = () => {
+    setNum(vlars[vlar]=Math.max(0, numb -10))
+    saveVars()
+  }
+
   return(
     <div className="row">
+      <button className="tallyButton"
+      onClick={handleSub10}>
+        -10
+      </button> 
       <button className="tallyButton"
       onClick={handleSub5}>
         -5
@@ -364,6 +382,10 @@ export function Score({vlar, max}) {
       <button className="tallyButton"
       onClick={handleAdd5}>
         +5
+      </button> 
+      <button className="tallyButton"
+      onClick={handleAdd10}>
+        +10
       </button> 
     </div>
   )

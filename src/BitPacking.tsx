@@ -88,7 +88,12 @@ Bits[9] = (((Number(vlars.sid) & 0x3F) << 2) |
 Bits[10] = (((Number(vlars.autowin) & 0x01) << 7) |
             ((Number(vlars.enterMid) & 0x01) << 6) |
             ((Number(vlars.crossMid) & 0x01) << 5) |
-            ((Number(vlars.startingPosition) & 0x03) << 3))
+            ((Number(vlars.startingPosition) & 0x03) << 3)|
+            ((Number(vlars.a1defend)& 0x01)<<2)|
+            ((Number(vlars.a2defend)& 0x01)<<1))
+
+Bits[11]= Number(teamid)
+
 console.log(Bits)
 function uint8ToBase64(uint8) {
   let binary = ""

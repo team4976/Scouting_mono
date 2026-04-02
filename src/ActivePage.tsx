@@ -12,6 +12,14 @@ export function Active1Page() {
             max={170}
             />
             <div className="spacer2"/>
+            <div className="row">
+                <div className="column">
+                     <div className="subTitle">Defend</div>
+                    <Checkbox
+                        vlar={"a1defend"}>
+                    </Checkbox>
+                </div>
+                </div>
             <div className="spacer2"/>
             <div className="row">
                 <div className="column">
@@ -59,6 +67,14 @@ export function Active2Page() {
             max={170}
             />
             <div className="spacer2"/>
+              <div className="row">
+                <div className="column">
+                     <div className="subTitle">Defend</div>
+                    <Checkbox
+                        vlar={"a2defend"}>
+                    </Checkbox>
+                </div>
+                </div>
             <div className="spacer2"/>
             <div className="row">
                 <div className="column">

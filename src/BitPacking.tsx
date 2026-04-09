@@ -1,5 +1,5 @@
 import { vlars } from "./Functions"
-const teams = ["610", "772", "1334", "2200", "2386", "2609", "2702", "3683", "3756", "4308", "4617", "4678", "4917", "4940", "4946", "4976","5408", "5409", "5870", "5912", "6725", "6854", "6875", "6975","7058", "8089", "8764", "9098", "9263", "10514", "11227"]
+const teams = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50"];
 
 const save = () => {
     localStorage.setItem("data", JSON.stringify(vlars))
@@ -17,7 +17,7 @@ export function genCodeValue() {
     }
 })
 if (!setTeam){
-  teamid = 31
+  teamid = 0
 }
   let autoclm
     if (vlars.autoclimb == true) {
@@ -42,7 +42,7 @@ if (!setTeam){
   }
   const packedTeleScore = Math.floor(telescore / 2)
   const packedAutoScore = Math.floor(vlars.autoscore / 2)
- const Bits = new Uint8Array(11)
+ const Bits = new Uint8Array(12)
 
 Bits[0] = (((Number(vlars.color) & 0x01) << 7) |
            ((Number(teamid) & 0x1F) << 2) |

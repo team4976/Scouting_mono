@@ -241,3 +241,21 @@
     justify-content: center;
     font-size: larger;
 }
+
+.barcodeButton{
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: large;
+    background-color: rgb(255, 255, 255);
+    border: #555555 solid 1px;
+    transition: 0.3s;
+}
+
+.barcodeButton:hover{
+    background-color: rgb(231, 231, 231);
+}
+
+.barcodeButton:active{
+    background-color: rgb(192, 192, 192);
+}

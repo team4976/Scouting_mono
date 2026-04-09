@@ -1,7 +1,8 @@
 import "./index.css"
 import { useState, useEffect, use } from "react";
 import { matches } from "./Matches";
-
+import Barcode from "react-barcode"
+import { genCodeValueEX } from "./BitPacking"
 
 const defaultVlars = {
   //pregame
@@ -748,4 +749,80 @@ export function AutoBehaviour() {
       </div>
     </div>
   )
+}
+
+export class HistoryBarcode {
+  isVisible: Boolean = true
+  isHighlighted: Boolean = false
+  number: number = 0
+  width: number = 1.2
+  height: number = 50
+  onPress: (index: number) => void
+
+  constructor(number: number, onPress: (index: number) => void) {
+    this.number = number
+    this.onPress = onPress
+  }
+
+  get visibility () {
+    return this.isVisible
+  }
+
+  set visibility (newVisibility) {
+    this.isVisible = newVisibility
+  }
+
+  get highlighted () {
+    return this.isHighlighted
+  }
+
+  set highlighted (newHighlight) {
+    this.isHighlighted = newHighlight
+  }
+
+  switchHighlighted () {
+    this.isHighlighted = !this.isHighlighted
+    if (this.isHighlighted == true) {
+      this.width = 1.5
+      this.height = 70
+    } else {
+      this.width = 1.2
+      this.height = 50
+    }
+  }
+  genCodeValue (i: number) {
+      if (history[i] == undefined) {
+          return("0000000000")
+      } else {
+          return(genCodeValueEX(JSON.parse(history[i])))
+      }
+  }
+  genMatchValue (i: number) {
+      if (history[i] == undefined) {
+          return("NA")
+      } else {
+          let varobj = JSON.parse(history[i])
+          return(varobj.matchno)
+      }
+  }
+  
+  genTeamValue (i: number) {
+      if (history[i] == undefined) {
+          return("NA")
+      } else {
+          let varobj = JSON.parse(history[i])
+          return(varobj.teamno)
+      }
+  }
+  get barcodeElement() {
+    return (
+     // <button className="barcodeButton" onClick={() => this.onPress(this.number)}>
+        <div className="row">
+            <div className="tableobj"><Barcode value={this.genCodeValue(this.number)} displayValue={false} width={this.width} height={this.height}/></div>
+            <div className="tableobj">Match #: {this.genMatchValue(this.number)}</div>
+            <div className="tableobj">Team #: {this.genTeamValue(this.number)}</div>
+        </div>
+      //</button>
+    )
+  }
 }

@@ -739,7 +739,7 @@ export function AutoBehaviour() {
       </div>
       <div className="spacer1"/>
       <div className="column">
-        <div className="subTitle">Crossed Middle</div>
+        <div className="subTitle">Crossed Mid Line</div>
         <input
             type="checkbox"
             className="checkboxG"
@@ -816,7 +816,7 @@ export class HistoryBarcode {
   }
   get barcodeElement() {
     return (
-     // <button className="barcodeButton" onClick={() => this.onPress(this.number)}>
+     //  <button className="barcodeButton" onClick={() => this.onPress(this.number)}>
         <div className="row">
             <div className="tableobj"><Barcode value={this.genCodeValue(this.number)} displayValue={false} width={this.width} height={this.height}/></div>
             <div className="tableobj">Match #: {this.genMatchValue(this.number)}</div>
